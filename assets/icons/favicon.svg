@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#333333"/>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#c1d72d" stroke-width="3"/>
+  <text x="32" y="40" font-family="Raleway, sans-serif" font-size="22" font-weight="800" fill="#c1d72d" text-anchor="middle">SN</text>
+</svg>
