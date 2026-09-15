@@ -1,8 +1,9 @@
 # Ciro Sandes Advocacia Estratégica — site institucional
 
-Site estático (HTML/CSS/JS puro, sem dependências de build), com identidade
-navy + dourado, tipografia Georgia nos títulos e efeito de iniciais
-maiores nas palavras importantes dos cabeçalhos.
+Site estático (HTML/CSS/JS puro, sem dependências de build), estruturado para
+ficar próximo do site de referência (header transparente sobre o hero,
+botões achatados com cantos cortados, sem cards com sombra, seções com
+textura sutil alternando com seções lisas).
 
 ## Como rodar localmente
 
@@ -14,16 +15,11 @@ Depois abra `http://localhost:8000`.
 
 ## Imagens pendentes
 
-O HTML já referencia os caminhos abaixo — os cards e o header ficam com um
-fundo neutro (gradiente) até essas imagens serem adicionadas, então nada
-quebra visualmente enquanto isso:
+O HTML já referencia os caminhos abaixo — enquanto não existirem, o layout
+usa cores neutras no lugar e nada quebra visualmente:
 
-- `assets/img/logo/ciro-sandes-logo.png` — logotipo "CIRO SANDES / ADVOCACIA ESTRATÉGICA"
-- `assets/img/equipe/antonio-ciro-sandes.jpg` — foto do advogado (retrato)
-- `assets/img/pilares/consultivo.jpg` — foto de fundo do card "Consultivo estratégico"
-- `assets/img/pilares/contencioso.jpg` — foto de fundo do card "Contencioso judicial & arbitral"
-- `assets/img/pilares/pareceres.jpg` — foto de fundo do card "Pareceres e notas técnicas"
-- `assets/img/pilares/co-counseling.jpg` — foto de fundo do card "Co-counseling"
+- `assets/img/logo/ciro-sandes-logo.png` — logotipo, usado no header e no rodapé
+- `assets/img/equipe/antonio-ciro-sandes.jpg` — foto do advogado (retrato, ideal proporção 4:5)
 
 Basta salvar os arquivos com esses nomes exatos nessas pastas.
 
@@ -35,22 +31,32 @@ Busque por `[...]` no `index.html`:
 - `[X] ANOS DE EXPERIÊNCIA` — preencher o tempo de atuação
 - `[Título da publicação 1/2/3]` — publicações reais, se houver
 
-## Cores e fonte
+## Cores
 
-Definidas em `css/style.css`, no topo (`:root`):
+Paleta em `css/style.css`, no topo (`:root`):
 
-- `--color-navy` / `--color-navy-2`: header (quando escuro), hero, footer
-- `--color-gold` / `--color-gold-dark`: destaque (botões, bordas, links)
-- `--color-cream`: fundo claro do header e de seções alternadas
-- `--font-heading`: Georgia (títulos, marca) · `--font-base`: Raleway (corpo de texto)
+| Token | Uso | Hex |
+|---|---|---|
+| `--color-bg` | fundo principal (marfim) | `#F6F3ED` |
+| `--color-bg-alt` | fundo alternado (seções "experiência"/"publicações") | `#EAE5DB` |
+| `--color-white` | branco auxiliar (cartões, molduras) | `#FCFBF8` |
+| `--color-green` | verde institucional (header, hero, footer, contato, links) | `#0C3C2F` |
+| `--color-text` | texto principal | `#191918` |
+| `--color-text-muted` | texto secundário | `#989590` |
+| `--color-border` | bordas | `#DED9D0` |
 
-## Efeito de iniciais maiores
+## Tipografia
 
-Qualquer elemento com a classe `cap-initials` tem a primeira letra de cada
-palavra "importante" (ignora conectivos como "de", "e", "da") aumentada via
-`js/main.js` → função `applyCapInitials`. Já aplicado à marca, ao hero e aos
-títulos de seção. Sem JavaScript, o texto continua legível normalmente,
-apenas sem o destaque tipográfico.
+- `--font-base` (Raleway): usada em quase todo o site, como no site de referência
+- `--font-heading` (Georgia): reservada só para a marca "Ciro Sandes" no
+  header/rodapé, com a inicial de cada palavra importante ampliada via
+  `js/main.js` → `applyCapInitials` (classe `cap-initials`)
+
+## Header
+
+Fica transparente sobre o hero e passa a ter fundo verde sólido ao rolar a
+página — controlado por `js/main.js` (`updateHeaderState`, classe
+`is-scrolled`).
 
 ## Formulário de contato
 
@@ -60,6 +66,6 @@ conecte a um serviço como Formspree, EmailJS ou seu próprio backend (ver
 
 ## Próximos passos sugeridos
 
-- Adicionar as imagens listadas acima
+- Adicionar o logotipo e a foto do advogado
 - Preencher número da OAB e anos de experiência
 - Adicionar SEO (Open Graph, sitemap, schema.org LegalService)

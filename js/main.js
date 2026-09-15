@@ -42,6 +42,14 @@ function applyCapInitials(root) {
 
 document.querySelectorAll('.cap-initials').forEach(applyCapInitials);
 
+// Header goes from transparent (over the hero) to solid once scrolled
+const siteHeader = document.querySelector('.site-header');
+function updateHeaderState() {
+  siteHeader.classList.toggle('is-scrolled', window.scrollY > 60);
+}
+updateHeaderState();
+window.addEventListener('scroll', updateHeaderState, { passive: true });
+
 // Mobile nav toggle
 const navToggle = document.getElementById('nav-toggle');
 const mainNav = document.getElementById('main-nav');

@@ -32,7 +32,7 @@
         <li><a href="#escritorio">O Escritório</a></li>
         <li><a href="#equipe">Advogado</a></li>
         <li><a href="#publicacoes">Publicações</a></li>
-        <li><a href="#contato" class="nav-cta">Contato</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
 
@@ -45,13 +45,14 @@
 <main id="conteudo">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
+    <div class="hero-texture" aria-hidden="true"></div>
     <div class="container hero-inner reveal">
       <p class="eyebrow">Advocacia Estratégica</p>
-      <h1 class="cap-initials">Ética. Qualidade técnica.<br>Atendimento personalizado.</h1>
+      <h1>Ética. Qualidade técnica.<br>Atendimento personalizado.</h1>
       <p class="hero-lead">Assessoria jurídica em direito empresarial, civil e trabalhista patronal, com atuação consultiva e contenciosa orientada a resultado.</p>
       <div class="hero-actions">
-        <a href="#contato" class="btn btn-accent">Fale conosco</a>
+        <a href="#contato" class="btn btn-invert">Fale conosco</a>
         <a href="#atuacao" class="btn btn-ghost">Conheça a atuação</a>
       </div>
     </div>
@@ -61,25 +62,25 @@
   <section class="pillars" id="atuacao">
     <div class="container">
       <div class="pillars-grid reveal">
-        <article class="pillar-card" style="background-image:url('assets/img/pilares/consultivo.jpg')">
-          <div class="pillar-card-overlay"></div>
-          <h2 class="cap-initials">Consultivo estratégico</h2>
-          <p>Assessoramento para planejar e executar operações societárias, contratuais e trabalhistas com segurança jurídica.</p>
+        <article class="pillar-col">
+          <h2>Consultivo estratégico</h2>
+          <p>Assessoramento para planejar e executar operações societárias, contratuais e trabalhistas.</p>
+          <a href="#contato" class="btn btn-outline btn-small">saiba mais</a>
         </article>
-        <article class="pillar-card" style="background-image:url('assets/img/pilares/contencioso.jpg')">
-          <div class="pillar-card-overlay"></div>
-          <h2 class="cap-initials">Contencioso judicial &amp; arbitral</h2>
+        <article class="pillar-col">
+          <h2>Contencioso judicial &amp; arbitral</h2>
           <p>Representação de clientes perante o juízo estatal e arbitral, em causas cíveis, empresariais e trabalhistas.</p>
+          <a href="#contato" class="btn btn-outline btn-small">saiba mais</a>
         </article>
-        <article class="pillar-card" style="background-image:url('assets/img/pilares/pareceres.jpg')">
-          <div class="pillar-card-overlay"></div>
-          <h2 class="cap-initials">Pareceres e notas técnicas</h2>
+        <article class="pillar-col">
+          <h2>Pareceres e notas técnicas</h2>
           <p>Elaboração de pareceres técnicos sobre aspectos jurídicos de litígios e operações.</p>
+          <a href="#contato" class="btn btn-outline btn-small">saiba mais</a>
         </article>
-        <article class="pillar-card" style="background-image:url('assets/img/pilares/co-counseling.jpg')">
-          <div class="pillar-card-overlay"></div>
-          <h2 class="cap-initials">Co-counseling</h2>
+        <article class="pillar-col">
+          <h2>Co-counseling</h2>
           <p>Atuação conjunta com outros escritórios para o desenvolvimento de teses e casos de maior complexidade.</p>
+          <a href="#contato" class="btn btn-outline btn-small">saiba mais</a>
         </article>
       </div>
     </div>
@@ -87,9 +88,10 @@
 
   <!-- EXPERIÊNCIA -->
   <section class="history">
+    <div class="history-texture" aria-hidden="true"></div>
     <div class="container history-inner reveal">
       <div class="history-headline">
-        <h2 class="cap-initials">[X] ANOS<br>DE EXPERIÊNCIA</h2>
+        <h2>[X] ANOS<br>DE EXPERIÊNCIA</h2>
         <span class="rule"></span>
       </div>
       <div class="history-text">
@@ -100,9 +102,10 @@
 
   <!-- PUBLICAÇÕES -->
   <section class="publications" id="publicacoes">
+    <div class="history-texture" aria-hidden="true"></div>
     <div class="container reveal">
       <div class="section-head">
-        <h2 class="cap-initials">PUBLICAÇÕES E<br>PRODUÇÃO ACADÊMICA</h2>
+        <h2>PUBLICAÇÕES E<br>PRODUÇÃO ACADÊMICA</h2>
         <span class="rule rule-right"></span>
       </div>
 
@@ -134,7 +137,7 @@
   <section class="about" id="escritorio">
     <div class="container about-grid reveal">
       <div class="section-head">
-        <h2 class="cap-initials">O ESCRITÓRIO</h2>
+        <h2>O ESCRITÓRIO</h2>
         <span class="rule"></span>
       </div>
 
@@ -145,7 +148,7 @@
       </div>
 
       <div class="about-areas">
-        <h3 class="cap-initials"><strong>Áreas de Atuação:</strong></h3>
+        <h3>Áreas de Atuação:</h3>
         <ul>
           <li>Direito Empresarial</li>
           <li>Direito Civil</li>
@@ -160,14 +163,16 @@
   <section class="team" id="equipe">
     <div class="container reveal">
       <div class="section-head center">
-        <h2 class="cap-initials">O ADVOGADO</h2>
+        <h2>O ADVOGADO</h2>
         <span class="rule rule-center"></span>
       </div>
 
       <div class="profile-card">
-        <div class="profile-photo" style="background-image:url('assets/img/equipe/antonio-ciro-sandes.jpg')" role="img" aria-label="Antonio Ciro Sandes de Oliveira"></div>
+        <div class="profile-photo-frame">
+          <div class="profile-photo" style="background-image:url('assets/img/equipe/antonio-ciro-sandes.jpg')" role="img" aria-label="Antonio Ciro Sandes de Oliveira"></div>
+        </div>
         <div class="profile-info">
-          <h3 class="cap-initials">Antonio Ciro Sandes de Oliveira</h3>
+          <h3>Antonio Ciro Sandes de Oliveira</h3>
           <p class="team-role">Advogado · OAB/SC [número]</p>
           <p>Atuação em direito empresarial, civil e trabalhista patronal, com abordagem consultiva e contenciosa orientada às necessidades de cada cliente.</p>
         </div>
@@ -179,12 +184,12 @@
   <section class="contact" id="contato">
     <div class="container contact-grid reveal">
       <div class="contact-info">
-        <h2 class="cap-initials">Fale com a gente</h2>
+        <h2>Fale com a gente</h2>
         <p>Envie uma mensagem e retornaremos o mais breve possível.</p>
         <ul class="contact-list">
-          <li><strong>Endereço:</strong> Al. Rolf Colin, nº 138, 3º andar, bairro América<br>CEP 89204-070 | Joinville - SC</li>
-          <li><strong>Telefone:</strong> <a href="tel:+5547997160406">(47) 9 9716-0406</a></li>
-          <li><strong>E-mail:</strong> <a href="mailto:aciso63@gmail.com">aciso63@gmail.com</a></li>
+          <li><span class="icon" aria-hidden="true">⌂</span><span><strong>Endereço:</strong><br>Al. Rolf Colin, nº 138, 3º andar, bairro América<br>CEP 89204-070 | Joinville - SC</span></li>
+          <li><span class="icon" aria-hidden="true">☎</span><span><strong>Telefone:</strong><br><a href="tel:+5547997160406">(47) 9 9716-0406</a></span></li>
+          <li><span class="icon" aria-hidden="true">✉</span><span><strong>E-mail:</strong><br><a href="mailto:aciso63@gmail.com">aciso63@gmail.com</a></span></li>
         </ul>
       </div>
 
@@ -201,7 +206,7 @@
         <label for="mensagem">Mensagem</label>
         <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
 
-        <button type="submit" class="btn btn-accent">Enviar mensagem</button>
+        <button type="submit" class="btn btn-invert">Enviar mensagem</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -210,9 +215,41 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>&copy; <span id="year"></span> Ciro Sandes Advocacia Estratégica. Todos os direitos reservados.</p>
-    <p class="footer-oab">OAB/SC [número] · Joinville - SC</p>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/logo/ciro-sandes-logo.png" alt="Ciro Sandes Advocacia Estratégica" onerror="this.style.display='none'" />
+      <span class="brand-text cap-initials">
+        <strong>Ciro Sandes</strong>
+        <small>Advocacia Estratégica</small>
+      </span>
+    </div>
+
+    <div class="footer-nav">
+      <p class="widget-title">Menu</p>
+      <ul>
+        <li><a href="#topo">› Home</a></li>
+        <li><a href="#atuacao">› Atuação</a></li>
+        <li><a href="#escritorio">› O Escritório</a></li>
+        <li><a href="#equipe">› Advogado</a></li>
+        <li><a href="#publicacoes">› Publicações</a></li>
+        <li><a href="#contato">› Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <ul>
+        <li><span class="icon" aria-hidden="true">⚖</span>Ciro Sandes Advocacia Estratégica</li>
+        <li><span class="icon" aria-hidden="true">⌂</span>Al. Rolf Colin, nº 138, 3º andar<br>CEP 89204-070 | Joinville - SC</li>
+        <li><span class="icon" aria-hidden="true">☎</span><a href="tel:+5547997160406">(47) 9 9716-0406</a></li>
+        <li><span class="icon" aria-hidden="true">✉</span><a href="mailto:aciso63@gmail.com">aciso63@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Ciro Sandes Advocacia Estratégica · OAB/SC [número]</p>
+    </div>
   </div>
 </footer>
 
