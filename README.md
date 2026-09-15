@@ -1,44 +1,65 @@
-# Site institucional
+# Ciro Sandes Advocacia Estratégica — site institucional
 
-Site estático (HTML/CSS/JS puro, sem dependências de build) inspirado na estrutura de
-um site de escritório de advocacia clássico: header fixo, hero, pilares de atuação,
-seção institucional, publicações, equipe e contato com botão flutuante de WhatsApp.
+Site estático (HTML/CSS/JS puro, sem dependências de build), com identidade
+navy + dourado, tipografia Georgia nos títulos e efeito de iniciais
+maiores nas palavras importantes dos cabeçalhos.
 
 ## Como rodar localmente
-
-Abra `index.html` direto no navegador, ou sirva a pasta com qualquer servidor estático:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-## O que personalizar
+Depois abra `http://localhost:8000`.
 
-Busque por `[...]` no `index.html` — são os pontos de conteúdo a substituir:
+## Imagens pendentes
 
-- `[Seu Escritório]` / `[Seu Nome]` — nome da marca (aparece no header, título, footer)
-- Textos do hero, pilares, "sobre" e áreas de atuação
-- Fotos: troque `.team-photo` / `.pub-thumb` (hoje são placeholders em CSS) por `<img>`
-- Endereço, telefone, e-mail e link do WhatsApp (`wa.me/55...`) na seção de contato e no botão flutuante
-- `assets/icons/favicon.svg` — iniciais e cores da marca
+O HTML já referencia os caminhos abaixo — os cards e o header ficam com um
+fundo neutro (gradiente) até essas imagens serem adicionadas, então nada
+quebra visualmente enquanto isso:
+
+- `assets/img/logo/ciro-sandes-logo.png` — logotipo "CIRO SANDES / ADVOCACIA ESTRATÉGICA"
+- `assets/img/equipe/antonio-ciro-sandes.jpg` — foto do advogado (retrato)
+- `assets/img/pilares/consultivo.jpg` — foto de fundo do card "Consultivo estratégico"
+- `assets/img/pilares/contencioso.jpg` — foto de fundo do card "Contencioso judicial & arbitral"
+- `assets/img/pilares/pareceres.jpg` — foto de fundo do card "Pareceres e notas técnicas"
+- `assets/img/pilares/co-counseling.jpg` — foto de fundo do card "Co-counseling"
+
+Basta salvar os arquivos com esses nomes exatos nessas pastas.
+
+## Pendências de conteúdo
+
+Busque por `[...]` no `index.html`:
+
+- `OAB/SC [número]` (aparece no perfil do advogado e no rodapé)
+- `[X] ANOS DE EXPERIÊNCIA` — preencher o tempo de atuação
+- `[Título da publicação 1/2/3]` — publicações reais, se houver
 
 ## Cores e fonte
 
-Definidas em `css/style.css`, no topo, como CSS custom properties (`:root`):
+Definidas em `css/style.css`, no topo (`:root`):
 
-- `--color-dark` / `--color-dark-2`: header, footer, seções escuras
-- `--color-accent`: cor de destaque (botões, links, títulos)
-- Fonte: [Raleway](https://fonts.google.com/specimen/Raleway) via Google Fonts
+- `--color-navy` / `--color-navy-2`: header (quando escuro), hero, footer
+- `--color-gold` / `--color-gold-dark`: destaque (botões, bordas, links)
+- `--color-cream`: fundo claro do header e de seções alternadas
+- `--font-heading`: Georgia (títulos, marca) · `--font-base`: Raleway (corpo de texto)
 
-Troque essas variáveis para adaptar à identidade visual do seu negócio.
+## Efeito de iniciais maiores
+
+Qualquer elemento com a classe `cap-initials` tem a primeira letra de cada
+palavra "importante" (ignora conectivos como "de", "e", "da") aumentada via
+`js/main.js` → função `applyCapInitials`. Já aplicado à marca, ao hero e aos
+títulos de seção. Sem JavaScript, o texto continua legível normalmente,
+apenas sem o destaque tipográfico.
 
 ## Formulário de contato
 
-O formulário em `#contato` valida no client-side mas não envia e-mail ainda — conecte a
-um serviço como Formspree, EmailJS ou seu próprio backend (ver `js/main.js`).
+O formulário em `#contato` valida no client-side mas não envia e-mail ainda —
+conecte a um serviço como Formspree, EmailJS ou seu próprio backend (ver
+`js/main.js`).
 
 ## Próximos passos sugeridos
 
-- Trocar placeholders de imagem por fotos reais (equipe, publicações)
-- Criar páginas internas (ex: `atuacao.html`, `equipe.html`) se o conteúdo crescer
-- Adicionar SEO (Open Graph, sitemap, schema.org LegalService) quando o domínio final estiver definido
+- Adicionar as imagens listadas acima
+- Preencher número da OAB e anos de experiência
+- Adicionar SEO (Open Graph, sitemap, schema.org LegalService)
