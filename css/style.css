@@ -17,8 +17,23 @@
   --font-base: 'Raleway', sans-serif;
 
   --container-width: 1140px;
-  --header-height: 96px;
+  --header-height: 110px;
+  --header-height-scrolled: 55px;
   --transition: 0.25s ease;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 80px;
+  --space-8: 96px;
+  --space-9: 120px;
+}
+
+@media (max-width: 860px) {
+  :root { --header-height: 90px; }
 }
 
 /* Fixed brand palette — this is a marketing site with a defined identity,
@@ -64,6 +79,18 @@ h1, h2, h3, h4 {
 }
 .skip-link:focus { left: 0; }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Enlarged initial letters on important words in the wordmark (JS-applied) */
 .cap-initial {
   font-size: 1.18em;
@@ -85,7 +112,7 @@ h1, h2, h3, h4 {
 }
 .site-header.is-scrolled {
   background: var(--color-green);
-  height: 72px;
+  height: var(--header-height-scrolled);
   box-shadow: 0 2px 14px rgba(0,0,0,0.25);
 }
 .header-inner {
@@ -138,6 +165,7 @@ h1, h2, h3, h4 {
   opacity: 0.9;
 }
 .main-nav a:hover { opacity: 1; border-color: var(--color-bg); }
+.main-nav a[aria-current="page"] { opacity: 1; border-color: var(--color-bg); }
 
 .nav-toggle {
   display: none;
@@ -258,6 +286,36 @@ h1, h2, h3, h4 {
   margin: 0 0 36px;
 }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ==========================================================================
+   Page hero — compact dark band used at the top of every inner page,
+   so the transparent header always sits over a dark surface
+   ========================================================================== */
+.page-hero {
+  position: relative;
+  min-height: 42vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--color-green-dark);
+  color: var(--color-bg);
+  padding-bottom: var(--space-7);
+}
+.page-hero-inner {
+  position: relative;
+  padding-top: var(--header-height);
+  max-width: 720px;
+}
+.page-hero h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: 1px;
+  margin: 0;
+  color: var(--color-bg);
+}
+
+@media (max-width: 600px) {
+  .page-hero { min-height: 34vh; padding-bottom: var(--space-6); }
+}
 
 /* ==========================================================================
    Section heads / rules
@@ -419,6 +477,139 @@ h1, h2, h3, h4 {
   .profile-photo-frame { width: 200px; margin: 0 auto; }
 }
 
+.profile-meta {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.profile-meta dt {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-muted);
+}
+.profile-meta dd {
+  margin: 2px 0 0;
+  font-size: 14.5px;
+  color: var(--color-text);
+}
+.profile-meta a { color: var(--color-green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ==========================================================================
+   Equipe — grid of profiles (list page)
+   ========================================================================== */
+.team-grid-list {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6) var(--space-4);
+}
+.team-grid-item { display: block; }
+.team-grid-item .profile-photo-frame { margin-bottom: var(--space-2); }
+.team-grid-item .profile-photo { aspect-ratio: 4 / 5; }
+.team-grid-item h3 {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+.team-grid-item:hover h3 { color: var(--color-green); }
+.team-grid-item .team-role { margin: 0; }
+
+@media (max-width: 860px) {
+  .team-grid-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .team-grid-list { grid-template-columns: 1fr; max-width: 280px; margin-inline: auto; }
+}
+
+/* ==========================================================================
+   Atuação — editorial list of practice areas (no cards)
+   ========================================================================== */
+.areas-list {
+  max-width: 760px;
+  margin-top: var(--space-2);
+}
+.areas-list .area-item {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.areas-list .area-item:first-child { padding-top: var(--space-3); }
+.areas-list .area-item:last-child { border-bottom: none; }
+.areas-list h2 { font-size: 20px; letter-spacing: 1px; color: var(--color-green); margin-bottom: var(--space-2); }
+.areas-list p { color: var(--color-text-muted); text-transform: none; letter-spacing: normal; max-width: 620px; }
+
+/* ==========================================================================
+   Reconhecimentos e associações
+   ========================================================================== */
+.recognition { padding: 100px 0; position: relative; background: var(--color-bg-alt); }
+.recognition .container { position: relative; }
+.recognition-grid {
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5) var(--space-4);
+  align-items: center;
+}
+.recognition-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 780px) {
+  .recognition-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ==========================================================================
+   Back link (used at the top of inner-page content, e.g. "voltar à equipe")
+   ========================================================================== */
+.back-link {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-green);
+  margin-bottom: var(--space-5);
+}
+.back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ==========================================================================
+   LGPD consent checkbox
+   ========================================================================== */
+.consent-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: var(--space-3);
+}
+.consent-field input[type="checkbox"] {
+  margin-top: 3px;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: var(--color-green);
+}
+.consent-field label {
+  margin: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 13px;
+  line-height: 1.5;
+  color: inherit;
+  opacity: 0.85;
+}
+.consent-field a { text-decoration: underline; text-underline-offset: 3px; }
+
 /* ==========================================================================
    Contact
    ========================================================================== */
@@ -467,6 +658,31 @@ h1, h2, h3, h4 {
 }
 .contact-form button { margin-top: 20px; align-self: flex-start; }
 .form-status { font-size: 13px; color: var(--color-bg); min-height: 1.2em; text-transform: none; letter-spacing: normal; }
+
+/* Light variant, used on the dedicated /contato/ page — declared after the
+   base .contact rules above so it reliably wins the cascade (same specificity). */
+.contact-light { background: var(--color-bg); color: var(--color-text); }
+.contact-light .contact-info h2,
+.contact-light .contact-info > p,
+.contact-light .contact-list li,
+.contact-light .contact-form label,
+.contact-light .form-status { color: var(--color-text); opacity: 1; }
+.contact-light .contact-info > p { color: var(--color-text-muted); }
+.contact-light .contact-form label { color: var(--color-text-muted); }
+.contact-light .contact-list a,
+.contact-light .form-status { color: var(--color-green); }
+.contact-light .contact-form {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+.contact-light .contact-form input,
+.contact-light .contact-form textarea {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+.contact-light .contact-form input:focus,
+.contact-light .contact-form textarea:focus { outline: 1px solid var(--color-green); }
 
 @media (max-width: 860px) {
   .contact-grid { grid-template-columns: 1fr; }
@@ -539,19 +755,3 @@ h1, h2, h3, h4 {
 }
 .whatsapp-fab:hover { transform: scale(1.08); }
 .whatsapp-fab svg { width: 26px; height: 26px; fill: #fff; }
-
-/* ==========================================================================
-   Reveal on scroll (progressive enhancement: hidden state only applied by JS,
-   so content stays visible if JavaScript fails to load or run)
-   ========================================================================== */
-.reveal {
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.js-reveal-ready .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-}
-.js-reveal-ready .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}

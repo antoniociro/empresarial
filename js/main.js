@@ -66,33 +66,19 @@ mainNav.querySelectorAll('a').forEach((link) => {
   });
 });
 
-// Scroll reveal (class added here so content is visible by default without JS)
-document.documentElement.classList.add('js-reveal-ready');
-
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
-revealEls.forEach((el) => observer.observe(el));
-
 // Contact form (client-side only — hook up to your backend/email service)
+// Guarded because not every page includes the contact form.
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (!form.checkValidity()) {
-    status.textContent = 'Preencha os campos obrigatórios.';
-    return;
-  }
-  status.textContent = 'Mensagem pronta para envio — conecte este formulário ao seu serviço de e-mail (ex: Formspree, EmailJS) ou backend.';
-  form.reset();
-});
+if (form && status) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      status.textContent = 'Preencha os campos obrigatórios.';
+      return;
+    }
+    status.textContent = 'Mensagem pronta para envio — conecte este formulário ao seu serviço de e-mail (ex: Formspree, EmailJS) ou backend.';
+    form.reset();
+  });
+}
