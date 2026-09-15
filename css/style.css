@@ -2,6 +2,8 @@
    Design tokens — ivory + dark forest green (traditional law-firm palette)
    ========================================================================== */
 :root {
+  color-scheme: light;
+
   --color-bg: #f6f3ed;        /* fundo principal — marfim / off-white quente */
   --color-bg-alt: #eae5db;    /* fundo alternativo recomendado — bege claro */
   --color-white: #fcfbf8;     /* branco auxiliar — branco suave */
@@ -19,16 +21,8 @@
   --transition: 0.25s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1a1d1c;
-    --color-bg-alt: #21241f;
-    --color-white: #22251f;
-    --color-text: #ece9e2;
-    --color-text-muted: #a8a49a;
-    --color-border: #34382f;
-  }
-}
+/* Fixed brand palette — this is a marketing site with a defined identity,
+   so it does not adapt to the visitor's OS dark-mode preference. */
 
 /* ==========================================================================
    Reset
