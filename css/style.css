@@ -250,9 +250,13 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(120deg, rgba(4,18,14,0.94) 10%, rgba(12,60,47,0.85) 60%, rgba(4,18,14,0.92) 100%),
+    linear-gradient(120deg, rgba(4,18,14,0.92) 10%, rgba(12,60,47,0.65) 55%, rgba(4,18,14,0.88) 100%),
     repeating-linear-gradient(115deg, rgba(246,243,237,0.035) 0 1px, transparent 1px 46px),
-    repeating-linear-gradient(25deg, rgba(246,243,237,0.02) 0 1px, transparent 1px 64px);
+    repeating-linear-gradient(25deg, rgba(246,243,237,0.02) 0 1px, transparent 1px 64px),
+    url('/assets/icons/skyline.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat-x;
+  background-position: 0 0, 0 0, 0 0, left bottom;
+  background-size: auto, auto, auto, auto 60%;
 }
 .hero-inner {
   position: relative;
@@ -334,16 +338,37 @@ h1, h2, h3, h4 {
 .section-cta { text-align: center; margin-top: 40px; }
 
 /* ==========================================================================
-   Pillars — plain columns, no cards, no shadows
+   Pillars — dark photographic cards overlapping a light section, matching
+   the reference site's boxed treatment over its hero photo
    ========================================================================== */
 .pillars { padding: 110px 0 90px; background: var(--color-bg); }
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 44px 36px;
+  gap: 28px;
 }
-.pillar-col h2 { font-size: 16.5px; letter-spacing: 1px; color: var(--color-green); }
-.pillar-col p { color: var(--color-text-muted); font-size: 14.5px; margin: 0 0 20px; text-transform: none; letter-spacing: normal; }
+.pillar-col {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 26px;
+  background-color: var(--color-green-dark);
+  background-image:
+    linear-gradient(180deg, rgba(4,18,14,0.55) 0%, rgba(4,18,14,0.85) 100%),
+    url('/assets/icons/skyline.svg');
+  background-repeat: no-repeat, repeat-x;
+  background-position: center, left bottom;
+  background-size: cover, auto 75%;
+  border: 1px solid var(--color-green);
+  transition: border-color var(--transition);
+}
+.pillar-col:hover { border-color: var(--color-bg); }
+.pillar-col h3 { position: relative; font-size: 16px; letter-spacing: 1px; color: var(--color-bg); margin-bottom: 10px; }
+.pillar-col p { position: relative; color: rgba(246,243,237,0.8); font-size: 14px; margin: 0 0 18px; text-transform: none; letter-spacing: normal; }
+.pillar-col .btn { position: relative; align-self: flex-start; }
 
 @media (max-width: 900px) {
   .pillars-grid { grid-template-columns: repeat(2, 1fr); }
@@ -460,6 +485,7 @@ h1, h2, h3, h4 {
   background-color: var(--color-bg-alt);
   background-size: cover;
   background-position: center top;
+  filter: grayscale(1) contrast(1.05);
 }
 .profile-info h3 { font-size: 19px; letter-spacing: 1px; margin-bottom: 6px; color: var(--color-text); }
 .profile-info p { text-transform: none; letter-spacing: normal; color: var(--color-text-muted); }
@@ -477,24 +503,31 @@ h1, h2, h3, h4 {
   .profile-photo-frame { width: 200px; margin: 0 auto; }
 }
 
-.profile-meta {
-  margin-top: var(--space-5);
+.profile-email { margin-top: -8px !important; }
+.profile-email a { color: var(--color-green); font-weight: 600; }
+
+.profile-highlights {
+  margin-top: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 10px;
+  max-width: 520px;
 }
-.profile-meta dt {
-  font-size: 11.5px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+.profile-highlights li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14.5px;
   color: var(--color-text-muted);
 }
-.profile-meta dd {
-  margin: 2px 0 0;
-  font-size: 14.5px;
-  color: var(--color-text);
+.profile-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: var(--color-green);
 }
-.profile-meta a { color: var(--color-green); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ==========================================================================
    Equipe — grid of profiles (list page)
@@ -526,20 +559,42 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   Atuação — editorial list of practice areas (no cards)
+   Atuação — alternating text/photo mosaic rows, matching the reference's
+   editorial "areas of practice" grid
    ========================================================================== */
-.areas-list {
-  max-width: 760px;
-  margin-top: var(--space-2);
+.area-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 340px;
 }
-.areas-list .area-item {
-  padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--color-border);
+.area-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-7) var(--space-6);
+  background: var(--color-bg);
 }
-.areas-list .area-item:first-child { padding-top: var(--space-3); }
-.areas-list .area-item:last-child { border-bottom: none; }
-.areas-list h2 { font-size: 20px; letter-spacing: 1px; color: var(--color-green); margin-bottom: var(--space-2); }
-.areas-list p { color: var(--color-text-muted); text-transform: none; letter-spacing: normal; max-width: 620px; }
+.area-row--alt .area-text { background: var(--color-bg-alt); }
+.area-text h2 { font-size: 22px; letter-spacing: 1px; color: var(--color-green); margin-bottom: var(--space-3); }
+.area-text p { color: var(--color-text-muted); text-transform: none; letter-spacing: normal; max-width: 480px; margin: 0; }
+.area-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  background-color: var(--color-green-dark);
+  background-image:
+    linear-gradient(180deg, rgba(4,18,14,0.45) 0%, rgba(4,18,14,0.85) 100%),
+    url('/assets/icons/skyline.svg');
+  background-repeat: no-repeat, repeat-x;
+  background-position: center, left bottom;
+  background-size: cover, auto 85%;
+}
+
+@media (max-width: 820px) {
+  .area-row { grid-template-columns: 1fr; }
+  .area-image { min-height: 220px; }
+  .area-text { padding: var(--space-6) var(--space-4); }
+}
 
 /* ==========================================================================
    Reconhecimentos e associações
