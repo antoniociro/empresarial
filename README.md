@@ -54,6 +54,7 @@ identidade **Os Sandes Advocacia Estratégica**: ardósia `#455B66` e areia
 - `assets/img/logo/os-sandes-logo.png` / `-claro.png` — logotipo horizontal para fundo claro / escuro
 - `assets/img/logo/os-sandes-simbolo.png` / `-claro.png` — só o símbolo (digital em "S")
 - `assets/img/logo/os-sandes-favicon.png` — ícone da aba (180×180)
+- `assets/img/escritorio/` — fotos do escritório usadas na seção "O espaço" (fachada, recepção, salas, convivência), redimensionadas para no máximo 1440 px
 
 ## Pendências de conteúdo
 
