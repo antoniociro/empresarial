@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#455b66">
-  <meta name="description" content="Advocacia com foco em Direito Empresarial e Trabalhista Patronal. Assessoria jurídica, prevenção de conflitos e atuação contenciosa.">
+  <meta name="description" content="Os Sandes Advocacia Estratégica: direito empresarial e trabalhista patronal. Contratos, questões societárias e defesa de empregadores.">
   <title>Os Sandes | Advocacia Estratégica</title>
   <link rel="icon" type="image/png" href="../assets/img/logo/os-sandes-favicon.png">
   <link rel="apple-touch-icon" href="../assets/img/logo/os-sandes-favicon.png">
@@ -16,11 +16,12 @@
       Preencha os dados profissionais antes de publicar.
 
       escritorio: nome da marca, usado no título da aba e no rodapé.
-      nome: nome do advogado, usado na seção "O escritório".
+      nome: nome do advogado, usado na seção "O advogado".
 
       WhatsApp: 55 + DDD + número.
       Fotos: informe um caminho como "../assets/img/socio.jpg"
-      ou uma URL completa. Deixe vazio enquanto não tiver as fotos.
+      ou uma URL completa. fotoCapa é o fundo da primeira tela
+      (pode ser trocada, por exemplo, por uma foto de Florianópolis).
 
       Confira também as áreas complementares na seção #outras-areas.
     */
@@ -36,9 +37,9 @@
       endereco: "",
 
       fotoSocio: "../assets/img/equipe/antonio-ciro-sandes.jpg",
-      fotoEscritorio: "",
+      fotoCapa: "../assets/img/escritorio/recepcao.jpg",
 
-      bio: "Atuação voltada à assessoria de empresas e à condução de demandas empresariais e trabalhistas patronais, com atenção ao contexto, às prioridades e às particularidades de cada cliente."
+      bio: "Ciro Sandes atende empresas e empregadores em questões societárias, contratos e relações de trabalho. Acompanha o cliente na consultoria do dia a dia e assume a defesa quando o conflito vira processo."
     };
   </script>
 
@@ -105,13 +106,6 @@
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      flex-shrink: 0;
-      background: currentColor;
-    }
     .dark .eyebrow { color: var(--areia); }
     .heading {
       font: 400 clamp(35px, 4.4vw, 58px)/1.13 var(--serif);
@@ -174,17 +168,6 @@
       z-index: 100;
     }
     .skip:focus { top: 12px; }
-    .progress {
-      position: fixed;
-      inset: 0 0 auto;
-      height: 3px;
-      background: var(--areia);
-      z-index: 90;
-      transform: scaleX(0);
-      transform-origin: left;
-      pointer-events: none;
-    }
-
     /* CABEÇALHO */
     .header {
       position: sticky;
@@ -259,108 +242,59 @@
       transform: translateY(-3.5px) rotate(-45deg);
     }
 
-    /* PRIMEIRA DOBRA */
-    .hero { overflow: hidden; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 68px;
-      align-items: center;
-      padding-block: 78px 70px;
+    /* PRIMEIRA DOBRA: foto do escritório ao fundo (CONFIG.fotoCapa) */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 70% center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg,
+        rgba(51, 69, 79, .95) 0%,
+        rgba(51, 69, 79, .86) 42%,
+        rgba(51, 69, 79, .38) 78%,
+        rgba(51, 69, 79, .2) 100%);
+    }
+    .hero-content {
+      max-width: 660px;
+      padding-block: clamp(96px, 12vw, 164px);
     }
     .hero h1 {
-      font: 400 clamp(45px, 5.6vw, 78px)/1.08 var(--serif);
-      letter-spacing: -.045em;
+      font: 400 clamp(42px, 5vw, 68px)/1.08 var(--serif);
+      letter-spacing: -.035em;
       text-wrap: balance;
     }
-    .hero h1 span { display: block; }
     .hero-copy {
-      max-width: 480px;
+      max-width: 520px;
       margin-top: 26px;
-      color: #cdd6db;
+      color: #e3e8eb;
       font-size: 17px;
     }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 22px;
-      margin-top: 34px;
-    }
-    .hero-note {
-      margin-top: 34px;
-      font-size: 11px;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: #cdd6db;
+      gap: 26px;
+      margin-top: 36px;
     }
     .hero-enter { animation: enter .85s both; }
     .delay-1 { animation-delay: .12s; }
     .delay-2 { animation-delay: .24s; }
     .delay-3 { animation-delay: .36s; }
     .media { position: relative; overflow: hidden; }
-    .hero-visual {
-      aspect-ratio: .85;
-      background: #3d515b;
-      border: 1px solid rgba(220, 209, 204, .25);
-    }
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(220, 209, 204, .2);
-      pointer-events: none;
-      z-index: 2;
-    }
-    .architecture {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 75% 20%, #5a707b, transparent 58%),
-        linear-gradient(155deg, #4b616c, #2f404a);
-    }
-    .architecture svg {
-      width: 100%;
-      height: 100%;
-      color: var(--areia);
-    }
-    .architecture .drawing {
-      stroke-dasharray: 1400;
-      stroke-dashoffset: 1400;
-      animation: draw 2.4s .25s forwards;
-    }
-    .architecture .brand-symbol {
-      position: absolute;
-      left: 50%;
-      top: 40%;
-      width: 34%;
-      max-width: 170px;
-      transform: translate(-50%, -50%);
-      opacity: .92;
-      animation: enter 1.2s .5s both;
-    }
-    .visual-caption {
-      position: absolute;
-      z-index: 3;
-      left: 38px;
-      right: 38px;
-      bottom: 36px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(220, 209, 204, .5);
-    }
-    .visual-caption small {
-      display: block;
-      color: #d6dee2;
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-    .visual-caption strong {
-      display: block;
-      margin-top: 5px;
-      color: var(--papel);
-      font: 26px var(--serif);
-    }
     /* opacity, não display: none — imagem lazy oculta nunca carrega */
     .media > img {
       opacity: 0;
@@ -374,33 +308,6 @@
     }
     .media.com-foto > img { opacity: 1; }
     .media.com-foto .placeholder { visibility: hidden; }
-    .hero-visual.com-foto::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: linear-gradient(transparent 40%, rgba(28, 39, 46, .9));
-    }
-    .hero-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid rgba(255, 255, 255, .15);
-    }
-    .hero-strip > div { padding: 27px 24px 29px 0; }
-    .hero-strip > div + div {
-      padding-left: 30px;
-      border-left: 1px solid rgba(255, 255, 255, .15);
-    }
-    .hero-strip strong {
-      display: block;
-      font: 22px var(--serif);
-    }
-    .hero-strip span {
-      display: block;
-      margin-top: 5px;
-      color: #cdd6db;
-      font-size: 13px;
-    }
 
     /* ÁREAS PRIORITÁRIAS */
     .focus-grid {
@@ -420,24 +327,8 @@
       box-shadow: 0 18px 45px rgba(43, 58, 66, .08);
     }
     .focus-card.dark { background: var(--ardosia); }
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 33px;
-    }
-    .card-number {
-      font: italic 35px var(--serif);
-      color: var(--areia-escura);
-    }
-    .dark .card-number { color: var(--areia); }
-    .card-kicker {
-      font-size: 10px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
     .focus-card h3 {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       font: 37px/1.12 var(--serif);
       letter-spacing: -.03em;
     }
@@ -585,14 +476,6 @@
       letter-spacing: .05em;
     }
     .bio { margin-top: 23px; }
-    .manifesto {
-      margin-top: 28px;
-      padding-top: 25px;
-      border-top: 1px solid var(--linha);
-      font: italic 24px/1.45 var(--serif);
-      color: var(--areia-escura);
-    }
-
     /* O ESPAÇO
        Fileiras justificadas: cada foto cresce na proporção da própria
        imagem (--r = largura / altura), então todas as fotos de uma
@@ -759,12 +642,10 @@
       from { opacity: 0; transform: translateY(22px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes draw { to { stroke-dashoffset: 0; } }
 
     /* TABLETS E CELULARES */
     @media (max-width: 1050px) {
       .nav { gap: 18px; }
-      .hero-grid { gap: 35px; }
       .about-grid, .method-grid, .contact-grid { gap: 45px; }
       .focus-card { padding: 30px; }
       .other-areas { gap: 45px; }
@@ -798,19 +679,18 @@
         gap: 7px;
       }
       .js .nav > a { padding: 12px; }
-      .hero-grid { padding-block: 58px 44px; }
-      .hero h1 { font-size: clamp(43px, 7vw, 65px); }
-      .hero-visual { aspect-ratio: .72; }
-      .hero-grid, .section-intro, .method-grid,
+      .hero::before {
+        background: linear-gradient(180deg,
+          rgba(51, 69, 79, .5) 0%,
+          rgba(51, 69, 79, .82) 45%,
+          rgba(51, 69, 79, .94) 100%);
+      }
+      .hero-content { padding-block: 72px 80px; }
+      .hero h1 { font-size: clamp(40px, 7vw, 58px); }
+      .section-intro, .method-grid,
       .about-grid, .contact-grid {
         grid-template-columns: 1fr;
       }
-      .hero-visual { aspect-ratio: 1.3; max-height: 440px; }
-      .hero-copy { max-width: 560px; }
-      .hero-strip > div { padding-right: 15px; }
-      .hero-strip > div + div { padding-left: 18px; }
-      .hero-strip strong { font-size: 20px; }
-      .hero-strip span { font-size: 12px; }
       .section-intro { gap: 22px; margin-bottom: 35px; }
       .section-intro > p { max-width: 560px; }
       .focus-card h3 { font-size: 30px; }
@@ -824,27 +704,11 @@
     @media (max-width: 560px) {
       .shell { width: calc(100% - 36px); }
       .section { padding-block: 60px; }
-      .hero-grid { padding-top: 44px; gap: 35px; }
-      .hero h1 { font-size: clamp(39px, 11vw, 57px); }
-      .hero .eyebrow {
-        font-size: 9px;
-        letter-spacing: .1em;
-        gap: 8px;
-      }
-      .hero .eyebrow::before { width: 18px; }
-      .hero-copy { font-size: 15px; }
-      .hero-actions { gap: 16px; }
-      .hero-note { font-size: 10px; letter-spacing: .08em; }
-      .hero-visual { aspect-ratio: 1.03; }
-      .visual-caption { left: 30px; right: 30px; bottom: 28px; }
-      .hero-strip { grid-template-columns: 1fr; }
-      .hero-strip > div, .hero-strip > div + div {
-        padding: 17px 0;
-        border-left: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, .12);
-      }
-      .hero-strip > div:last-child { border-bottom: 0; }
-      .hero-strip span { margin-top: 2px; }
+      .hero-content { padding-block: 120px 64px; }
+      .hero h1 { font-size: clamp(36px, 10.5vw, 50px); }
+      .hero .eyebrow { font-size: 10px; letter-spacing: .12em; }
+      .hero-copy { font-size: 16px; }
+      .hero-actions { gap: 18px; }
       .focus-grid, .form-row { grid-template-columns: 1fr; }
       .focus-card { padding: 29px 25px; }
       .focus-card h3 { font-size: 35px; }
@@ -861,11 +725,8 @@
       }
       .space-row { display: contents; }
       .space-photo { aspect-ratio: 3 / 5; }
-      .space-recepcao { order: 1; grid-column: 1 / -1; aspect-ratio: 4 / 3; }
-      .space-fachada { order: 2; }
-      .space-reunioes { order: 3; }
-      .space-atendimento { order: 4; grid-column: 1 / -1; aspect-ratio: 3 / 2; }
-      .space-convivencia { order: 5; grid-column: 1 / -1; aspect-ratio: 4 / 5; }
+      .space-atendimento { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+      .space-convivencia { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
       .space-convivencia img { object-position: center 65%; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -875,23 +736,21 @@
         transition: none !important;
       }
       .reveal.aguardando { opacity: 1; transform: none; }
-      .architecture .drawing { stroke-dashoffset: 0; }
     }
     @media print {
-      .header, .floating-contact, .progress, .form { display: none !important; }
+      .header, .floating-contact, .form { display: none !important; }
       .section { padding-block: 30px; }
       .reveal.aguardando { opacity: 1; transform: none; }
       .dark { background: white; color: black; }
       .dark .muted { color: #333; }
-      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-bg, .hero::before { display: none; }
     }
   </style>
 </head>
 
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-  <div class="progress" id="progresso" aria-hidden="true"></div>
 
   <header class="header dark" id="cabecalho">
     <div class="shell header-inner">
@@ -915,87 +774,39 @@
 
       <nav class="nav" id="menu" aria-label="Navegação principal">
         <a href="#atuacao">Áreas de atuação</a>
-        <a href="#abordagem">Nossa abordagem</a>
+        <a href="#abordagem">Como trabalhamos</a>
+        <a href="#advogado">O advogado</a>
         <a href="#escritorio">O escritório</a>
-        <a href="#espaco">O espaço</a>
-        <a href="#contato" class="nav-contact">Entre em contato ↗</a>
+        <a href="#contato" class="nav-contact">Contato</a>
       </nav>
     </div>
   </header>
 
   <main id="conteudo">
     <section class="hero dark" id="inicio" aria-labelledby="titulo-principal">
+      <img class="hero-bg" id="foto-capa"
+        src="../assets/img/escritorio/recepcao.jpg" alt=""
+        width="1440" height="1080" fetchpriority="high">
+
       <div class="shell">
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow hero-enter">
-              Empresarial &amp; trabalhista patronal
-            </p>
+        <div class="hero-content">
+          <p class="eyebrow hero-enter">
+            Direito empresarial e trabalhista patronal
+          </p>
 
-            <h1 class="hero-enter delay-1" id="titulo-principal">
-              <span>Segurança jurídica.</span>
-              <span><em>Visão de negócio.</em></span>
-            </h1>
+          <h1 class="hero-enter delay-1" id="titulo-principal">
+            Do contrato à audiência, ao lado da sua empresa.
+          </h1>
 
-            <p class="hero-copy hero-enter delay-2">
-              Assessoria jurídica para empresas, empresários e gestores.
-              Atenção às decisões de hoje, com responsabilidade sobre
-              o que vem depois.
-            </p>
+          <p class="hero-copy hero-enter delay-2">
+            Cuidamos dos contratos, das questões societárias e das
+            relações de trabalho de empresas e empregadores. Quando
+            um conflito vira processo, fazemos a defesa.
+          </p>
 
-            <div class="hero-actions hero-enter delay-3">
-              <a class="button" href="#contato">
-                Fale com o escritório
-                <span class="arrow" aria-hidden="true">↗</span>
-              </a>
-              <a class="text-link" href="#atuacao">
-                Conheça nossa atuação
-                <span class="arrow" aria-hidden="true">↓</span>
-              </a>
-            </div>
-
-            <p class="hero-note hero-enter delay-3">
-              Análise técnica. Diálogo próximo. Atuação responsável.
-            </p>
-          </div>
-
-          <!--
-            A foto do escritório aparecerá neste espaço quando
-            CONFIG.fotoEscritorio for preenchido.
-          -->
-          <figure class="hero-visual media hero-enter delay-2" id="foto-escritorio">
-            <div class="architecture placeholder" aria-hidden="true">
-              <svg viewBox="0 0 480 560" preserveAspectRatio="xMidYMid slice">
-                <circle cx="240" cy="224" r="150"
-                  fill="none" stroke="currentColor" opacity=".16"/>
-                <circle class="drawing" cx="240" cy="224" r="185"
-                  fill="none" stroke="currentColor" opacity=".3"/>
-                <circle cx="240" cy="224" r="225"
-                  fill="none" stroke="currentColor" opacity=".07"/>
-              </svg>
-              <img class="brand-symbol"
-                src="../assets/img/logo/os-sandes-simbolo-claro.png" alt="">
-            </div>
-
-            <figcaption class="visual-caption">
-              <small>Direito com perspectiva</small>
-              <strong>Decisões bem orientadas.</strong>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div class="hero-strip">
-          <div>
-            <strong>Consultivo</strong>
-            <span>Orientação para decisões e operações.</span>
-          </div>
-          <div>
-            <strong>Preventivo</strong>
-            <span>Atenção aos riscos da atividade empresarial.</span>
-          </div>
-          <div>
-            <strong>Contencioso</strong>
-            <span>Condução técnica de conflitos e demandas.</span>
+          <div class="hero-actions hero-enter delay-3">
+            <a class="button" href="#contato">Falar com o escritório</a>
+            <a class="text-link" href="#atuacao">Ver áreas de atuação</a>
           </div>
         </div>
       </div>
@@ -1007,67 +818,48 @@
           <div>
             <p class="eyebrow">Áreas de atuação</p>
             <h2 class="heading" id="titulo-atuacao">
-              O Direito presente<br>nas decisões da empresa.
+              Duas áreas concentram a maior parte do nosso trabalho.
             </h2>
           </div>
           <p class="muted">
-            Foco em Direito Empresarial e Trabalhista Patronal,
-            com atuação consultiva e contenciosa conectada à
-            realidade de cada negócio.
+            Atendemos empresas tanto na consultoria do dia a dia
+            quanto em processos judiciais e administrativos.
           </p>
         </div>
 
         <div class="focus-grid">
           <article class="focus-card reveal" aria-labelledby="empresarial">
-            <div class="card-top">
-              <span class="card-number" aria-hidden="true">01</span>
-              <span class="card-kicker">Empresas &amp; negócios</span>
-            </div>
-
             <h3 id="empresarial">Direito<br>Empresarial</h3>
             <p class="muted">
-              Assessoria para estruturar relações comerciais,
-              orientar decisões societárias e conduzir os
-              desafios jurídicos da operação.
+              Contratos, sociedade e as decisões da operação
+              que envolvem risco jurídico.
             </p>
 
             <ul class="service-list">
-              <li>Elaboração e revisão de contratos comerciais</li>
-              <li>Estrutura societária e acordos entre sócios</li>
-              <li>Assessoria jurídica para a rotina empresarial</li>
-              <li>Negociação e condução de conflitos empresariais</li>
+              <li>Elaboração, revisão e negociação de contratos comerciais</li>
+              <li>Constituição de sociedade, alterações e acordo de sócios</li>
+              <li>Consultoria jurídica para a rotina da empresa</li>
+              <li>Cobranças e disputas entre empresas</li>
             </ul>
 
-            <a class="text-link" href="#contato">
-              Conversar sobre minha empresa
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
+            <a class="text-link" href="#contato">Falar sobre a minha empresa</a>
           </article>
 
           <article class="focus-card dark reveal" aria-labelledby="trabalhista">
-            <div class="card-top">
-              <span class="card-number" aria-hidden="true">02</span>
-              <span class="card-kicker">Empregadores &amp; gestão</span>
-            </div>
-
             <h3 id="trabalhista">Trabalhista<br>Patronal</h3>
             <p class="muted">
-              Orientação jurídica ao empregador, com atenção
-              à prevenção de conflitos, às rotinas de pessoal
-              e à defesa dos interesses da empresa.
+              Defesa do empregador em processos trabalhistas e
+              orientação para que eles não aconteçam.
             </p>
 
             <ul class="service-list">
               <li>Defesa em reclamações trabalhistas</li>
-              <li>Assessoria preventiva para RH e lideranças</li>
-              <li>Contratos, jornadas e rotinas de trabalho</li>
-              <li>Negociações e relações sindicais</li>
+              <li>Orientação ao RH sobre contratação, jornada e desligamento</li>
+              <li>Contratos de trabalho e regulamentos internos</li>
+              <li>Negociação com sindicatos e acordos coletivos</li>
             </ul>
 
-            <a class="text-link" href="#contato">
-              Conversar sobre uma demanda
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
+            <a class="text-link" href="#contato">Falar sobre um caso trabalhista</a>
           </article>
         </div>
 
@@ -1078,12 +870,11 @@
         -->
         <div class="other-areas" id="outras-areas">
           <div class="reveal">
-            <p class="eyebrow">Atuação complementar</p>
-            <h3>Atenção às diferentes<br>dimensões de cada demanda.</h3>
+            <p class="eyebrow">Outras áreas</p>
+            <h3>Também atendemos</h3>
             <p class="muted">
-              Questões pessoais, patrimoniais e administrativas
-              também podem exigir orientação jurídica.
-              Conheça as demais frentes de atuação.
+              Além das duas áreas principais, o escritório
+              atua nos assuntos abaixo.
             </p>
           </div>
 
@@ -1091,44 +882,39 @@
             <details>
               <summary>Cível e Contratos</summary>
               <p>
-                Elaboração e revisão de contratos, obrigações,
-                cobranças, responsabilidade civil e demandas
-                relacionadas a danos materiais e morais.
+                Contratos, cobranças, responsabilidade civil
+                e indenizações por danos materiais e morais.
               </p>
             </details>
 
             <details>
               <summary>Família e Sucessões</summary>
               <p>
-                Orientação em divórcios judiciais e extrajudiciais,
-                pensão alimentícia, inventários, partilhas
-                e questões relacionadas à herança.
+                Divórcio judicial e em cartório, pensão alimentícia,
+                inventário e partilha de bens.
               </p>
             </details>
 
             <details>
               <summary>Direito Imobiliário</summary>
               <p>
-                Assessoria em contratos imobiliários, locações,
-                regularização de imóveis e questões relacionadas
-                à posse, à propriedade e à usucapião.
+                Compra e venda, locação, regularização de imóveis
+                e usucapião.
               </p>
             </details>
 
             <details>
               <summary>Relações de Consumo</summary>
               <p>
-                Orientação e atuação em conflitos de consumo,
-                contratos, cobranças e questões envolvendo
-                defeitos de produtos ou serviços.
+                Conflitos de consumo, cobranças indevidas e defeitos
+                em produtos ou serviços.
               </p>
             </details>
 
             <details>
               <summary>Administrativo e Servidor Público</summary>
               <p>
-                Assessoria em licitações, processos administrativos
-                e questões relacionadas aos direitos e às obrigações
+                Licitações, processos administrativos e direitos
                 de servidores públicos.
               </p>
             </details>
@@ -1140,30 +926,26 @@
     <section class="section dark" id="abordagem" aria-labelledby="titulo-abordagem">
       <div class="shell method-grid">
         <div class="method-copy reveal">
-          <p class="eyebrow">Nossa abordagem</p>
+          <p class="eyebrow">Como trabalhamos</p>
           <h2 class="heading" id="titulo-abordagem">
-            Entender o contexto.<br>
-            <em>Orientar o próximo passo.</em>
+            Antes de propor uma medida, lemos os documentos.
           </h2>
           <p class="muted">
-            Cada demanda começa com escuta e análise.
-            A orientação jurídica considera os documentos,
-            os riscos envolvidos e as prioridades do cliente.
+            O atendimento começa por entender o problema e o negócio.
+            Só depois apresentamos as alternativas, com os riscos de
+            cada uma e o que o trabalho vai custar.
           </p>
-          <a class="text-link" href="#contato">
-            Apresente sua demanda
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
+          <a class="text-link" href="#contato">Agendar uma conversa</a>
         </div>
 
         <div>
           <article class="step reveal">
             <span aria-hidden="true">01</span>
             <div>
-              <h3>Compreensão</h3>
+              <h3>Primeira conversa</h3>
               <p class="muted">
-                Conhecer a situação, organizar as informações
-                relevantes e identificar as questões jurídicas envolvidas.
+                Você explica a situação e nós dizemos quais
+                documentos precisamos ver.
               </p>
             </div>
           </article>
@@ -1171,10 +953,10 @@
           <article class="step reveal">
             <span aria-hidden="true">02</span>
             <div>
-              <h3>Orientação</h3>
+              <h3>Análise e proposta</h3>
               <p class="muted">
-                Apresentar caminhos possíveis, esclarecer riscos
-                e definir o escopo da atuação com transparência.
+                Estudamos o caso e apresentamos as alternativas,
+                os riscos, os prazos e a proposta de honorários.
               </p>
             </div>
           </article>
@@ -1184,8 +966,8 @@
             <div>
               <h3>Acompanhamento</h3>
               <p class="muted">
-                Conduzir as medidas acordadas e manter uma comunicação
-                clara sobre o andamento e as próximas etapas.
+                Fazemos o trabalho combinado e avisamos você
+                a cada movimentação importante.
               </p>
             </div>
           </article>
@@ -1193,7 +975,7 @@
       </div>
     </section>
 
-    <section class="section" id="escritorio" aria-labelledby="titulo-escritorio">
+    <section class="section" id="advogado" aria-labelledby="titulo-advogado">
       <div class="shell about-grid">
         <!-- A foto do sócio substitui automaticamente o monograma. -->
         <div class="portrait media reveal" id="foto-socio">
@@ -1204,9 +986,9 @@
         </div>
 
         <div class="about-copy reveal">
-          <p class="eyebrow">O escritório</p>
-          <h2 class="heading" id="titulo-escritorio">
-            Uma advocacia próxima<br>de quem decide.
+          <p class="eyebrow">O advogado</p>
+          <h2 class="heading" id="titulo-advogado">
+            Quem cuida do seu caso
           </h2>
 
           <h3 class="partner-name" data-nome>Ciro Sandes</h3>
@@ -1215,54 +997,41 @@
           </p>
 
           <p class="bio muted" id="bio">
-            Atuação voltada à assessoria de empresas e à condução
-            de demandas empresariais e trabalhistas patronais,
-            com atenção ao contexto de cada cliente.
-          </p>
-
-          <p class="manifesto">
-            Uma decisão bem orientada começa com uma conversa.
+            Ciro Sandes atende empresas e empregadores em questões
+            societárias, contratos e relações de trabalho. Acompanha
+            o cliente na consultoria do dia a dia e assume a defesa
+            quando o conflito vira processo.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section dark" id="espaco" aria-labelledby="titulo-espaco">
+    <section class="section dark" id="escritorio" aria-labelledby="titulo-escritorio">
       <div class="shell">
         <div class="section-intro reveal">
           <div>
-            <p class="eyebrow">O espaço</p>
-            <h2 class="heading" id="titulo-espaco">
-              Um ambiente reservado<br>
-              <em>para conversas importantes.</em>
+            <p class="eyebrow">O escritório</p>
+            <h2 class="heading" id="titulo-escritorio">
+              Salas reservadas para tratar de assuntos sensíveis.
             </h2>
           </div>
           <p class="muted">
-            Recepção, salas de atendimento e de reunião preparadas
-            para receber clientes com conforto, discrição
-            e tempo para ouvir.
+            As reuniões acontecem em salas fechadas, com privacidade
+            para falar de sócios, funcionários e números da empresa.
           </p>
         </div>
 
         <div class="space-gallery reveal">
           <div class="space-row">
-            <figure class="space-photo space-recepcao" style="--r: 1.3333">
-              <img src="../assets/img/escritorio/recepcao.jpg"
-                alt="Recepção com sofá curvo branco diante de painel de madeira em ondas"
-                width="1440" height="1080" loading="lazy" decoding="async">
+            <figure class="space-photo space-atendimento" style="--r: 1.5">
+              <img src="../assets/img/escritorio/sala-atendimento.jpg"
+                alt="Sala de atendimento com mesa de mármore, poltronas verdes e parede de madeira"
+                width="1440" height="960" loading="lazy" decoding="async">
             </figure>
             <figure class="space-photo space-fachada" style="--r: .517">
               <img src="../assets/img/escritorio/fachada.jpg"
                 alt="Fachada envidraçada do edifício onde fica o escritório"
                 width="259" height="501" loading="lazy" decoding="async">
-            </figure>
-          </div>
-
-          <div class="space-row">
-            <figure class="space-photo space-atendimento" style="--r: 1.5">
-              <img src="../assets/img/escritorio/sala-atendimento.jpg"
-                alt="Sala de atendimento com mesa de mármore, poltronas verdes e parede de madeira"
-                width="1440" height="960" loading="lazy" decoding="async">
             </figure>
             <figure class="space-photo space-reunioes" style="--r: .75">
               <img src="../assets/img/escritorio/sala-reunioes.jpg"
@@ -1284,12 +1053,12 @@
         <div class="contact-copy reveal">
           <p class="eyebrow">Contato</p>
           <h2 class="heading" id="titulo-contato">
-            Vamos conversar<br>sobre o seu próximo passo.
+            Conte o que está acontecendo.
           </h2>
           <p class="muted">
-            Para tratar de assuntos empresariais, relações
-            de trabalho ou outras demandas jurídicas,
-            entre em contato com o escritório.
+            Explique a situação em poucas linhas. A mensagem abre
+            pronta no WhatsApp do escritório para você revisar
+            e enviar.
           </p>
 
           <ul class="contact-list">
@@ -1318,7 +1087,7 @@
             evitando envio acidental por GET se o script falhar.
           -->
           <form class="form" id="form-contato" hidden>
-            <h3>Inicie uma conversa</h3>
+            <h3>Enviar mensagem</h3>
 
             <div class="form-row">
               <div class="field">
@@ -1359,22 +1128,18 @@
             </div>
 
             <div class="field">
-              <label for="mensagem">Breve mensagem <span>(opcional)</span></label>
+              <label for="mensagem">Mensagem <span>(opcional)</span></label>
               <textarea
                 id="mensagem"
                 name="mensagem"
                 maxlength="1200"
-                placeholder="Conte, em poucas palavras, o assunto do contato."></textarea>
+                placeholder="Ex.: recebemos uma notificação trabalhista e precisamos de orientação."></textarea>
             </div>
 
-            <button class="button" type="submit">
-              Continuar no WhatsApp
-              <span class="arrow" aria-hidden="true">→</span>
-            </button>
+            <button class="button" type="submit">Continuar no WhatsApp</button>
 
             <p class="form-note">
-              A mensagem será preparada para você revisar e enviar
-              no WhatsApp. O envio depende da sua confirmação por lá.
+              Nada é enviado sem a sua confirmação no WhatsApp.
             </p>
 
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -1399,12 +1164,11 @@
         </a>
 
         <p class="footer-description">
-          Direito Empresarial e Trabalhista Patronal.<br>
-          Análise jurídica com atenção ao seu contexto.
+          Direito empresarial e trabalhista patronal.
         </p>
 
         <a class="text-link" href="#inicio">
-          Voltar ao topo <span aria-hidden="true">↑</span>
+          Voltar ao topo
         </a>
       </div>
 
@@ -1424,7 +1188,7 @@
     id="contato-flutuante"
     href="#contato"
     aria-label="Falar com o escritório">
-    Contato <span aria-hidden="true">↗</span>
+    Contato
   </a>
 
   <script>
@@ -1475,14 +1239,17 @@
       $("#endereco").textContent = CONFIG.endereco;
     }
 
-    /* FOTOS: mantém a composição gráfica se a imagem não carregar. */
+    /* CAPA: se a foto não carregar, fica o fundo ardósia. */
+    const capa = $("#foto-capa");
+    capa.addEventListener("error", () => capa.remove());
+    if (CONFIG.fotoCapa) {
+      if (capa.getAttribute("src") !== CONFIG.fotoCapa) capa.src = CONFIG.fotoCapa;
+    } else {
+      capa.remove();
+    }
+
+    /* FOTOS: mantém o monograma se a imagem não carregar. */
     [
-      {
-        selector: "#foto-escritorio",
-        src: CONFIG.fotoEscritorio,
-        alt: "Ambiente do escritório",
-        eager: true
-      },
       {
         selector: "#foto-socio",
         src: CONFIG.fotoSocio,
@@ -1580,18 +1347,10 @@
       }
     }
 
-    /* PROGRESSO DE LEITURA E SOMBRA DO CABEÇALHO */
+    /* SOMBRA DO CABEÇALHO */
     let framePending = false;
 
     function updateScroll() {
-      const total =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      const progress = total > 0
-        ? Math.min(1, Math.max(0, window.scrollY / total))
-        : 0;
-
-      $("#progresso").style.transform = "scaleX(" + progress + ")";
       $("#cabecalho").classList.toggle("rolado", window.scrollY > 16);
       framePending = false;
     }
