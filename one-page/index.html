@@ -593,16 +593,24 @@
       color: var(--areia-escura);
     }
 
-    /* O ESPAÇO */
+    /* O ESPAÇO
+       Fileiras justificadas: cada foto cresce na proporção da própria
+       imagem (--r = largura / altura), então todas as fotos de uma
+       fileira ficam com a mesma altura e aparecem inteiras, sem corte. */
     .space-gallery {
       display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
+    }
+    .space-row {
+      display: flex;
+      gap: 14px;
     }
     .space-photo {
       position: relative;
+      flex: var(--r) 1 0;
+      min-width: 0;
+      aspect-ratio: var(--r);
       overflow: hidden;
-      min-height: 0;
       background: var(--ardosia-escura);
     }
     .space-photo img {
@@ -613,35 +621,7 @@
       object-fit: cover;
       transition: transform .8s cubic-bezier(.2,.7,.2,1);
     }
-    .space-photo:hover img { transform: scale(1.035); }
-    .space-photo figcaption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 42px 20px 16px;
-      background: linear-gradient(transparent, rgba(28, 39, 46, .8));
-      color: var(--papel);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    .space-recepcao {
-      grid-column: 4 / 13;
-      grid-row: 1;
-      aspect-ratio: 3 / 2;
-    }
-    .space-fachada { grid-column: 1 / 4; grid-row: 1; }
-    .space-atendimento {
-      grid-column: 1 / 7;
-      grid-row: 2;
-      aspect-ratio: 3 / 2;
-    }
-    .space-reunioes { grid-column: 7 / 10; grid-row: 2; }
-    .space-convivencia { grid-column: 10 / 13; grid-row: 2; }
-    .space-reunioes img { object-position: 70% center; }
-    .space-convivencia img { object-position: center 65%; }
+    .space-photo:hover img { transform: scale(1.03); }
 
     /* CONTATO */
     .contact-section { background: #e8e2de; }
@@ -839,25 +819,6 @@
       .service-list li { font-size: 13px; }
       .other-areas { grid-template-columns: 1fr; gap: 25px; margin-top: 58px; }
       .portrait { max-width: 420px; width: 100%; }
-      .space-gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-      .space-gallery .space-photo {
-        grid-column: auto;
-        grid-row: auto;
-        aspect-ratio: 3 / 5;
-      }
-      .space-gallery .space-recepcao,
-      .space-gallery .space-atendimento {
-        grid-column: 1 / -1;
-        aspect-ratio: 3 / 2;
-      }
-      .space-gallery .space-convivencia {
-        grid-column: 1 / -1;
-        aspect-ratio: 4 / 5;
-      }
-      .space-photo figcaption { padding: 34px 14px 12px; }
       .method-copy > p, .contact-copy > p { max-width: 560px; }
     }
     @media (max-width: 560px) {
@@ -894,6 +855,18 @@
       .footer { padding-bottom: 90px; }
       .footer-top { align-items: flex-start; flex-direction: column; }
       .floating-contact { right: 15px; bottom: 15px; }
+      .space-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .space-row { display: contents; }
+      .space-photo { aspect-ratio: 3 / 5; }
+      .space-recepcao { order: 1; grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+      .space-fachada { order: 2; }
+      .space-reunioes { order: 3; }
+      .space-atendimento { order: 4; grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+      .space-convivencia { order: 5; grid-column: 1 / -1; aspect-ratio: 4 / 5; }
+      .space-convivencia img { object-position: center 65%; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1271,45 +1244,37 @@
           </p>
         </div>
 
-        <!--
-          A ordem no HTML é a usada no celular.
-          No desktop, cada foto tem posição fixa na grade (.space-*).
-        -->
         <div class="space-gallery reveal">
-          <figure class="space-photo space-recepcao">
-            <img src="../assets/img/escritorio/recepcao.jpg"
-              alt="Recepção com sofá curvo branco diante de painel de madeira em ondas"
-              width="1440" height="1080" loading="lazy" decoding="async">
-            <figcaption>Recepção</figcaption>
-          </figure>
+          <div class="space-row">
+            <figure class="space-photo space-recepcao" style="--r: 1.3333">
+              <img src="../assets/img/escritorio/recepcao.jpg"
+                alt="Recepção com sofá curvo branco diante de painel de madeira em ondas"
+                width="1440" height="1080" loading="lazy" decoding="async">
+            </figure>
+            <figure class="space-photo space-fachada" style="--r: .517">
+              <img src="../assets/img/escritorio/fachada.jpg"
+                alt="Fachada envidraçada do edifício onde fica o escritório"
+                width="259" height="501" loading="lazy" decoding="async">
+            </figure>
+          </div>
 
-          <figure class="space-photo space-fachada">
-            <img src="../assets/img/escritorio/fachada.jpg"
-              alt="Fachada envidraçada do edifício onde fica o escritório"
-              width="266" height="497" loading="lazy" decoding="async">
-            <figcaption>Edifício</figcaption>
-          </figure>
-
-          <figure class="space-photo space-reunioes">
-            <img src="../assets/img/escritorio/sala-reunioes.jpg"
-              alt="Sala de reuniões com mesa redonda, painel ripado de madeira e janelas amplas"
-              width="1080" height="1440" loading="lazy" decoding="async">
-            <figcaption>Sala de reuniões</figcaption>
-          </figure>
-
-          <figure class="space-photo space-atendimento">
-            <img src="../assets/img/escritorio/sala-atendimento.jpg"
-              alt="Sala de atendimento com mesa de mármore, poltronas verdes e parede de madeira"
-              width="1440" height="960" loading="lazy" decoding="async">
-            <figcaption>Sala de atendimento</figcaption>
-          </figure>
-
-          <figure class="space-photo space-convivencia">
-            <img src="../assets/img/escritorio/convivencia.jpg"
-              alt="Área de convivência com sofá longo em branco e verde e luminárias com folhagens"
-              width="960" height="1280" loading="lazy" decoding="async">
-            <figcaption>Área de convivência</figcaption>
-          </figure>
+          <div class="space-row">
+            <figure class="space-photo space-atendimento" style="--r: 1.5">
+              <img src="../assets/img/escritorio/sala-atendimento.jpg"
+                alt="Sala de atendimento com mesa de mármore, poltronas verdes e parede de madeira"
+                width="1440" height="960" loading="lazy" decoding="async">
+            </figure>
+            <figure class="space-photo space-reunioes" style="--r: .75">
+              <img src="../assets/img/escritorio/sala-reunioes.jpg"
+                alt="Sala de reuniões com mesa redonda, painel ripado de madeira e janelas amplas"
+                width="1080" height="1440" loading="lazy" decoding="async">
+            </figure>
+            <figure class="space-photo space-convivencia" style="--r: .75">
+              <img src="../assets/img/escritorio/convivencia.jpg"
+                alt="Área de convivência com sofá longo em branco e verde e luminárias com folhagens"
+                width="960" height="1280" loading="lazy" decoding="async">
+            </figure>
+          </div>
         </div>
       </div>
     </section>
