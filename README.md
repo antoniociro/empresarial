@@ -39,9 +39,21 @@ O HTML já referencia os caminhos abaixo — enquanto não existirem, o layout
 usa cores neutras no lugar e nada quebra visualmente:
 
 - `assets/img/logo/ciro-sandes-logo.png` — logotipo, usado no header e no rodapé de todas as páginas
-- `assets/img/equipe/antonio-ciro-sandes.jpg` — foto do advogado (retrato, proporção 4:5), usada em `/`, `/equipe/` e `/equipe/antonio-ciro-sandes-de-oliveira/`
 
-Basta salvar os arquivos com esses nomes exatos nessas pastas.
+Basta salvar o arquivo com esse nome exato nessa pasta. A foto do advogado
+(`assets/img/equipe/antonio-ciro-sandes.jpg`) já está no repositório.
+
+## Versão one-page e marca Os Sandes
+
+`/one-page/` é uma versão em página única, autocontida (CSS/JS inline), com
+um bloco `CONFIG` no topo para nome, OAB, WhatsApp, e-mail e fotos. Ela usa a
+identidade **Os Sandes Advocacia Estratégica**: ardósia `#455B66` e areia
+`#DCD1CC`, tiradas do logotipo.
+
+- `assets/img/marca/` — arquivos originais da marca (selo, logotipo horizontal, apresentações)
+- `assets/img/logo/os-sandes-logo.png` / `-claro.png` — logotipo horizontal para fundo claro / escuro
+- `assets/img/logo/os-sandes-simbolo.png` / `-claro.png` — só o símbolo (digital em "S")
+- `assets/img/logo/os-sandes-favicon.png` — ícone da aba (180×180)
 
 ## Pendências de conteúdo
 

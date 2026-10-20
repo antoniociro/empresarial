@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#142825">
+  <meta name="theme-color" content="#455b66">
   <meta name="description" content="Advocacia com foco em Direito Empresarial e Trabalhista Patronal. Assessoria jurídica, prevenção de conflitos e atuação contenciosa.">
-  <title>Ciro Sandes | Advocacia Empresarial e Trabalhista</title>
+  <title>Os Sandes | Advocacia Estratégica</title>
+  <link rel="icon" type="image/png" href="../assets/img/logo/os-sandes-favicon.png">
+  <link rel="apple-touch-icon" href="../assets/img/logo/os-sandes-favicon.png">
 
   <script>
     /*
       PERSONALIZE AQUI
 
-      Nome provisório, baseado nos nomes dos arquivos enviados.
       Preencha os dados profissionais antes de publicar.
 
+      escritorio: nome da marca, usado no título da aba e no rodapé.
+      nome: nome do advogado, usado na seção "O escritório".
+
       WhatsApp: 55 + DDD + número.
-      Fotos: informe um caminho como "imagens/socio.jpg"
+      Fotos: informe um caminho como "../assets/img/socio.jpg"
       ou uma URL completa. Deixe vazio enquanto não tiver as fotos.
 
       Confira também as áreas complementares na seção #outras-areas.
     */
     const CONFIG = {
+      escritorio: "Os Sandes",
       nome: "Ciro Sandes",
       iniciais: "CS",
       oab: "[OAB/UF nº …]",
@@ -30,7 +35,7 @@
       email: "",
       endereco: "",
 
-      fotoSocio: "",
+      fotoSocio: "../assets/img/equipe/antonio-ciro-sandes.jpg",
       fotoEscritorio: "",
 
       bio: "Atuação voltada à assessoria de empresas e à condução de demandas empresariais e trabalhistas patronais, com atenção ao contexto, às prioridades e às particularidades de cada cliente."
@@ -38,17 +43,18 @@
   </script>
 
   <style>
-    /* IDENTIDADE VISUAL */
+    /* IDENTIDADE VISUAL — cores extraídas do logotipo Os Sandes */
     :root {
-      --verde: #142825;
-      --verde-claro: #24433b;
-      --papel: #f4f0e7;
-      --branco: #fcfaf5;
-      --ouro: #c4a36b;
-      --ouro-escuro: #796039;
-      --tinta: #24342c;
-      --cinza: #616a63;
-      --linha: rgba(36, 52, 44, .17);
+      --ardosia: #455b66;
+      --ardosia-clara: #5a707b;
+      --ardosia-escura: #33454f;
+      --papel: #f4f1ee;
+      --branco: #fcfbf9;
+      --areia: #dcd1cc;
+      --areia-escura: #6f6058;
+      --tinta: #2b3a42;
+      --cinza: #5f6b72;
+      --linha: rgba(43, 58, 66, .17);
       --serif: Georgia, "Times New Roman", serif;
       --sans: Arial, Helvetica, sans-serif;
     }
@@ -63,7 +69,7 @@
       -webkit-font-smoothing: antialiased;
     }
     [hidden] { display: none !important; }
-    ::selection { background: var(--ouro); color: var(--verde); }
+    ::selection { background: var(--areia); color: var(--ardosia); }
     h1, h2, h3, p, figure { margin: 0; }
     h1, h2, h3 { font-weight: 400; }
     a { color: inherit; text-decoration: none; }
@@ -75,25 +81,25 @@
       -webkit-tap-highlight-color: transparent;
     }
     :focus-visible {
-      outline: 3px solid var(--ouro-escuro);
+      outline: 3px solid var(--areia-escura);
       outline-offset: 5px;
     }
-    .dark :focus-visible { outline-color: var(--ouro); }
+    .dark :focus-visible { outline-color: var(--areia); }
     section, main { scroll-margin-top: 108px; }
     .shell {
       width: min(1180px, calc(100% - 64px));
       margin-inline: auto;
     }
     .section { padding-block: 108px; }
-    .dark { background: var(--verde); color: var(--papel); }
+    .dark { background: var(--ardosia); color: var(--papel); }
     .muted { color: var(--cinza); }
-    .dark .muted { color: #bdcbc2; }
+    .dark .muted { color: #cdd6db; }
     .eyebrow {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 22px;
-      color: var(--ouro-escuro);
+      color: var(--areia-escura);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .18em;
@@ -106,14 +112,14 @@
       flex-shrink: 0;
       background: currentColor;
     }
-    .dark .eyebrow { color: var(--ouro); }
+    .dark .eyebrow { color: var(--areia); }
     .heading {
       font: 400 clamp(35px, 4.4vw, 58px)/1.13 var(--serif);
       letter-spacing: -.035em;
       text-wrap: balance;
     }
     .heading em, h1 em {
-      color: var(--ouro);
+      color: var(--areia);
       font-weight: 400;
     }
     .section-intro {
@@ -131,15 +137,15 @@
       justify-content: center;
       gap: 22px;
       padding: 14px 23px;
-      border: 1px solid var(--ouro);
-      background: var(--ouro);
-      color: var(--verde);
+      border: 1px solid var(--areia);
+      background: var(--areia);
+      color: var(--ardosia);
       font-size: 14px;
       font-weight: 700;
       transition: background .25s, transform .25s, box-shadow .25s;
     }
     .button:hover {
-      background: #d7b986;
+      background: #e9e1dd;
       transform: translateY(-3px);
       box-shadow: 0 9px 24px rgba(0, 0, 0, .1);
     }
@@ -164,7 +170,7 @@
       top: -100px;
       padding: 12px 18px;
       background: var(--papel);
-      color: var(--verde);
+      color: var(--ardosia);
       z-index: 100;
     }
     .skip:focus { top: 12px; }
@@ -172,7 +178,7 @@
       position: fixed;
       inset: 0 0 auto;
       height: 3px;
-      background: var(--ouro);
+      background: var(--areia);
       z-index: 90;
       transform: scaleX(0);
       transform-origin: left;
@@ -201,28 +207,9 @@
       gap: 14px;
       flex-shrink: 0;
     }
-    .brand-mark {
-      width: 46px;
-      height: 49px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(196, 163, 107, .7);
-      color: var(--ouro);
-      font: 24px var(--serif);
-      letter-spacing: -.07em;
-    }
-    .brand-name {
-      display: block;
-      font: 23px/1.2 var(--serif);
-      letter-spacing: .02em;
-    }
-    .brand-sub {
-      display: block;
-      margin-top: 5px;
-      color: #c6d0c9;
-      font-size: 9px;
-      letter-spacing: .3em;
-      text-transform: uppercase;
+    .brand-logo {
+      width: auto;
+      height: 46px;
     }
     .nav { display: flex; align-items: center; gap: 29px; }
     .nav > a {
@@ -237,7 +224,7 @@
       right: 0;
       bottom: 3px;
       height: 1px;
-      background: var(--ouro);
+      background: var(--areia);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .25s;
@@ -245,14 +232,14 @@
     .nav > a:hover::after { transform: scaleX(1); }
     .nav .nav-contact {
       padding: 11px 18px;
-      border: 1px solid rgba(196, 163, 107, .6);
-      color: var(--ouro);
+      border: 1px solid rgba(220, 209, 204, .6);
+      color: var(--areia);
     }
     .menu-toggle {
       display: none;
       min-width: 48px;
       min-height: 48px;
-      border: 1px solid rgba(196, 163, 107, .5);
+      border: 1px solid rgba(220, 209, 204, .5);
       background: transparent;
       align-items: center;
       justify-content: center;
@@ -290,7 +277,7 @@
     .hero-copy {
       max-width: 480px;
       margin-top: 26px;
-      color: #c6d0c9;
+      color: #cdd6db;
       font-size: 17px;
     }
     .hero-actions {
@@ -305,7 +292,7 @@
       font-size: 11px;
       letter-spacing: .13em;
       text-transform: uppercase;
-      color: #becbc2;
+      color: #cdd6db;
     }
     .hero-enter { animation: enter .85s both; }
     .delay-1 { animation-delay: .12s; }
@@ -314,14 +301,14 @@
     .media { position: relative; overflow: hidden; }
     .hero-visual {
       aspect-ratio: .85;
-      background: #1c3730;
-      border: 1px solid rgba(196, 163, 107, .25);
+      background: #3d515b;
+      border: 1px solid rgba(220, 209, 204, .25);
     }
     .hero-visual::before {
       content: "";
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(196, 163, 107, .2);
+      border: 1px solid rgba(220, 209, 204, .2);
       pointer-events: none;
       z-index: 2;
     }
@@ -329,18 +316,28 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 75% 20%, #365446, transparent 58%),
-        linear-gradient(155deg, #244238, #12251f);
+        radial-gradient(ellipse at 75% 20%, #5a707b, transparent 58%),
+        linear-gradient(155deg, #4b616c, #2f404a);
     }
     .architecture svg {
       width: 100%;
       height: 100%;
-      color: var(--ouro);
+      color: var(--areia);
     }
     .architecture .drawing {
       stroke-dasharray: 1400;
       stroke-dashoffset: 1400;
       animation: draw 2.4s .25s forwards;
+    }
+    .architecture .brand-symbol {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      width: 34%;
+      max-width: 170px;
+      transform: translate(-50%, -50%);
+      opacity: .92;
+      animation: enter 1.2s .5s both;
     }
     .visual-caption {
       position: absolute;
@@ -349,11 +346,11 @@
       right: 38px;
       bottom: 36px;
       padding-top: 18px;
-      border-top: 1px solid rgba(196, 163, 107, .5);
+      border-top: 1px solid rgba(220, 209, 204, .5);
     }
     .visual-caption small {
       display: block;
-      color: #d1dbd3;
+      color: #d6dee2;
       font-size: 10px;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -364,8 +361,9 @@
       color: var(--papel);
       font: 26px var(--serif);
     }
+    /* opacity, não display: none — imagem lazy oculta nunca carrega */
     .media > img {
-      display: none;
+      opacity: 0;
       position: absolute;
       inset: 0;
       width: 100%;
@@ -374,14 +372,14 @@
       object-position: center;
       z-index: 1;
     }
-    .media.com-foto > img { display: block; }
+    .media.com-foto > img { opacity: 1; }
     .media.com-foto .placeholder { visibility: hidden; }
     .hero-visual.com-foto::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: linear-gradient(transparent 40%, rgba(10, 25, 20, .9));
+      background: linear-gradient(transparent 40%, rgba(28, 39, 46, .9));
     }
     .hero-strip {
       display: grid;
@@ -400,7 +398,7 @@
     .hero-strip span {
       display: block;
       margin-top: 5px;
-      color: #bdcbc2;
+      color: #cdd6db;
       font-size: 13px;
     }
 
@@ -419,9 +417,9 @@
     }
     .focus-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 18px 45px rgba(20, 40, 37, .07);
+      box-shadow: 0 18px 45px rgba(43, 58, 66, .08);
     }
-    .focus-card.dark { background: var(--verde); }
+    .focus-card.dark { background: var(--ardosia); }
     .card-top {
       display: flex;
       justify-content: space-between;
@@ -430,9 +428,9 @@
     }
     .card-number {
       font: italic 35px var(--serif);
-      color: var(--ouro-escuro);
+      color: var(--areia-escura);
     }
-    .dark .card-number { color: var(--ouro); }
+    .dark .card-number { color: var(--areia); }
     .card-kicker {
       font-size: 10px;
       letter-spacing: .15em;
@@ -462,12 +460,12 @@
       position: absolute;
       left: 0;
       top: 25px;
-      background: var(--ouro-escuro);
+      background: var(--areia-escura);
     }
     .dark .service-list li {
       border-color: rgba(255, 255, 255, .15);
     }
-    .dark .service-list li::before { background: var(--ouro); }
+    .dark .service-list li::before { background: var(--areia); }
 
     /* ÁREAS COMPLEMENTARES */
     .other-areas {
@@ -499,7 +497,7 @@
       content: "+";
       font-size: 24px;
       font-weight: 400;
-      color: var(--ouro-escuro);
+      color: var(--areia-escura);
       flex-shrink: 0;
       transition: transform .25s;
     }
@@ -521,7 +519,7 @@
       max-width: 430px;
       margin-top: 26px;
     }
-    .method-copy .text-link { margin-top: 30px; color: var(--ouro); }
+    .method-copy .text-link { margin-top: 30px; color: var(--areia); }
     .step {
       display: grid;
       grid-template-columns: 44px 1fr;
@@ -531,7 +529,7 @@
     }
     .step:first-child { padding-top: 0; }
     .step > span {
-      color: var(--ouro);
+      color: var(--areia);
       font: italic 29px var(--serif);
     }
     .step h3 {
@@ -549,7 +547,7 @@
     }
     .portrait {
       aspect-ratio: 4 / 5;
-      background: #e4ded1;
+      background: #e6dfdb;
       border: 1px solid var(--linha);
     }
     .portrait .placeholder {
@@ -559,14 +557,14 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      border: 1px solid rgba(121, 96, 57, .35);
+      border: 1px solid rgba(111, 96, 88, .35);
       background:
         linear-gradient(110deg, transparent 45%, rgba(255,255,255,.35) 45%, transparent 75%);
     }
     .portrait-initials {
       font: clamp(110px, 12vw, 180px)/1 var(--serif);
       letter-spacing: -.09em;
-      color: #8b7856;
+      color: #8a7c74;
       padding-right: .09em;
     }
     .portrait small {
@@ -574,7 +572,7 @@
       font-size: 10px;
       letter-spacing: .28em;
       text-transform: uppercase;
-      color: #6d604c;
+      color: #6f6058;
     }
     .about-copy .heading { margin-bottom: 30px; }
     .partner-name {
@@ -592,11 +590,11 @@
       padding-top: 25px;
       border-top: 1px solid var(--linha);
       font: italic 24px/1.45 var(--serif);
-      color: var(--ouro-escuro);
+      color: var(--areia-escura);
     }
 
     /* CONTATO */
-    .contact-section { background: #e7e1d6; }
+    .contact-section { background: #e8e2de; }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -616,7 +614,7 @@
     .contact-list small {
       display: block;
       margin-bottom: 3px;
-      color: var(--ouro-escuro);
+      color: var(--areia-escura);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .14em;
@@ -650,14 +648,20 @@
       width: 100%;
       min-width: 0;
       padding: 12px;
-      border: 1px solid #bdbfb4;
+      border: 1px solid #bcc2c5;
       border-radius: 0;
       background: transparent;
       color: var(--tinta);
       font-size: 16px;
     }
     textarea { min-height: 105px; resize: vertical; }
-    .form .button { width: 100%; }
+    .form .button {
+      width: 100%;
+      border-color: var(--ardosia);
+      background: var(--ardosia);
+      color: var(--papel);
+    }
+    .form .button:hover { background: var(--ardosia-escura); }
     .form-note {
       margin-top: 13px;
       color: var(--cinza);
@@ -668,7 +672,7 @@
       margin-top: 14px;
       font-size: 13px;
       font-weight: 700;
-      color: var(--verde);
+      color: var(--ardosia);
     }
     .form-status:empty { display: none; }
 
@@ -685,7 +689,7 @@
     }
     .footer-description {
       max-width: 280px;
-      color: #bdcbc2;
+      color: #cdd6db;
       font-size: 13px;
     }
     .footer-bottom {
@@ -694,7 +698,7 @@
       flex-wrap: wrap;
       gap: 14px;
       padding-top: 24px;
-      color: #bdcbc2;
+      color: #cdd6db;
       font-size: 11px;
     }
     .floating-contact {
@@ -707,8 +711,8 @@
       gap: 16px;
       min-height: 49px;
       padding: 12px 20px;
-      border: 1px solid var(--ouro);
-      background: var(--verde);
+      border: 1px solid var(--areia);
+      background: var(--ardosia);
       color: var(--papel);
       box-shadow: 0 8px 25px rgba(0, 0, 0, .2);
       font-size: 13px;
@@ -739,7 +743,7 @@
       .shell { width: min(680px, calc(100% - 40px)); }
       .section { padding-block: 76px; }
       .header-inner { min-height: 78px; flex-wrap: wrap; }
-      .brand-name { font-size: 21px; }
+      .brand-logo { height: 40px; }
       .nav {
         width: 100%;
         flex-wrap: wrap;
@@ -753,8 +757,8 @@
         left: 0;
         width: 100%;
         padding: 18px 24px 26px;
-        background: var(--verde);
-        border-bottom: 1px solid var(--ouro);
+        background: var(--ardosia);
+        border-bottom: 1px solid var(--areia);
         box-shadow: 0 15px 22px rgba(0,0,0,.15);
       }
       .js .nav.aberto {
@@ -849,12 +853,11 @@
 
   <header class="header dark" id="cabecalho">
     <div class="shell header-inner">
-      <a class="brand" href="#inicio" aria-label="Página inicial">
-        <span class="brand-mark" data-iniciais aria-hidden="true">CS</span>
-        <span>
-          <span class="brand-name" data-nome>Ciro Sandes</span>
-          <span class="brand-sub">Advocacia</span>
-        </span>
+      <a class="brand" href="#inicio">
+        <img class="brand-logo"
+          src="../assets/img/logo/os-sandes-logo-claro.png"
+          alt="Os Sandes Advocacia Estratégica — página inicial"
+          width="950" height="204">
       </a>
 
       <button
@@ -920,28 +923,15 @@
           <figure class="hero-visual media hero-enter delay-2" id="foto-escritorio">
             <div class="architecture placeholder" aria-hidden="true">
               <svg viewBox="0 0 480 560" preserveAspectRatio="xMidYMid slice">
-                <circle cx="345" cy="130" r="95"
-                  fill="none" stroke="currentColor" opacity=".18"/>
-                <circle cx="345" cy="130" r="120"
-                  fill="none" stroke="currentColor" opacity=".09"/>
-
-                <g class="drawing" fill="none"
-                  stroke="currentColor" stroke-width="1.2" opacity=".65">
-                  <path d="M65 440V220L145 175V440"/>
-                  <path d="M145 440V110L245 55V440"/>
-                  <path d="M245 440V170L335 120V440"/>
-                  <path d="M335 440V260L415 215V440"/>
-                  <path d="M83 430V230L126 205V430"/>
-                  <path d="M165 430V123L224 91V430"/>
-                  <path d="M265 430V183L315 155V430"/>
-                  <path d="M354 430V272L395 248V430"/>
-                  <path d="M45 440H435"/>
-                  <path d="M45 450H435"/>
-                </g>
-
-                <path d="M65 440L145 395L245 440L335 395L415 440"
-                  fill="none" stroke="currentColor" opacity=".2"/>
+                <circle cx="240" cy="224" r="150"
+                  fill="none" stroke="currentColor" opacity=".16"/>
+                <circle class="drawing" cx="240" cy="224" r="185"
+                  fill="none" stroke="currentColor" opacity=".3"/>
+                <circle cx="240" cy="224" r="225"
+                  fill="none" stroke="currentColor" opacity=".07"/>
               </svg>
+              <img class="brand-symbol"
+                src="../assets/img/logo/os-sandes-simbolo-claro.png" alt="">
             </div>
 
             <figcaption class="visual-caption">
@@ -1306,12 +1296,11 @@
   <footer class="footer dark">
     <div class="shell">
       <div class="footer-top">
-        <a class="brand" href="#inicio" aria-label="Voltar ao início">
-          <span class="brand-mark" data-iniciais aria-hidden="true">CS</span>
-          <span>
-            <span class="brand-name" data-nome>Ciro Sandes</span>
-            <span class="brand-sub">Advocacia</span>
-          </span>
+        <a class="brand" href="#inicio">
+          <img class="brand-logo"
+            src="../assets/img/logo/os-sandes-logo-claro.png"
+            alt="Os Sandes Advocacia Estratégica — voltar ao início"
+            width="950" height="204" loading="lazy">
         </a>
 
         <p class="footer-description">
@@ -1327,7 +1316,7 @@
       <div class="footer-bottom">
         <span>
           © <span id="ano">2026</span>
-          <span data-nome>Ciro Sandes</span>.
+          <span data-escritorio>Os Sandes</span> Advocacia Estratégica.
           Todos os direitos reservados.
         </span>
         <span data-oab>[OAB/UF nº …]</span>
@@ -1351,9 +1340,11 @@
     const validPhone = /^55\d{10,11}$/.test(phone);
 
     /* IDENTIDADE E CONTATOS */
-    document.title =
-      CONFIG.nome + " | Advocacia Empresarial e Trabalhista";
+    document.title = CONFIG.escritorio + " | Advocacia Estratégica";
 
+    document.querySelectorAll("[data-escritorio]").forEach(el => {
+      el.textContent = CONFIG.escritorio;
+    });
     document.querySelectorAll("[data-nome]").forEach(el => {
       el.textContent = CONFIG.nome;
     });
