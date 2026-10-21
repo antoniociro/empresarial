@@ -1,100 +1,106 @@
-# Ciro Sandes Advocacia Estratégica — site institucional
+# Ciro Sandes — Advocacia Estratégica
 
-Site estático multi-página (HTML/CSS/JS puro, sem build/framework),
-reproduzindo a arquitetura de informação, grid, ritmo editorial e
-comportamento do site de referência (header transparente sobre o hero que
-vira sólido ao rolar, botões achatados com cantos cortados, sem cards com
-sombra/ícones-em-bolinha, seções com textura sutil alternando com seções
-lisas), aplicados à identidade própria (Ciro Sandes Advocacia Estratégica).
+Site institucional redesenhado em HTML, CSS e JavaScript. Sete páginas, sem framework, sem compilação e sem dependências externas em tempo de execução.
 
-## Estrutura de páginas
+## Abrir o site
 
-```
-/                                          Home
-/atuacao/                                  Áreas de atuação
-/equipe/                                   Grid da equipe
-/equipe/antonio-ciro-sandes-de-oliveira/   Perfil individual
-/publicacoes/                              Publicações (grid completo)
-/contato/                                  Contato (formulário, variante clara)
-/privacidade/                              Política de Privacidade (stub, noindex)
-```
+1. Extraia o ZIP inteiro.
+2. Abra `index.html` no navegador. Mantenha as pastas ao lado dele.
 
-Cada página é um `index.html` próprio (rotas "limpas" via pasta +
-`index.html`), todas compartilhando `css/style.css` e `js/main.js` através de
-caminhos **absolutos** (`/css/style.css`, `/assets/...`) — funciona ao servir
-o projeto a partir da raiz de um domínio. Não há necessidade de build.
-
-## Como rodar localmente
+Os caminhos são relativos: a navegação também funciona diretamente pelos arquivos e em subpastas de hospedagem. Para uma prévia por servidor local, execute na pasta do projeto:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Depois abra `http://localhost:8000` (sirva a partir da raiz do projeto, para
-os caminhos `/css/...` e `/assets/...` resolverem).
+Abra `http://localhost:8000`. Para publicar, envie todo o conteúdo desta pasta para uma hospedagem de arquivos estáticos. Não é necessário executar npm, instalar pacotes ou fazer build.
 
-## Imagens pendentes
+## Arquivos
 
-O HTML já referencia os caminhos abaixo — enquanto não existirem, o layout
-usa cores neutras no lugar e nada quebra visualmente:
+| Caminho | Conteúdo |
+| --- | --- |
+| `index.html` | Página inicial |
+| `atuacao/index.html` | Quatro frentes de atuação e três áreas do direito |
+| `equipe/index.html` | Apresentação do escritório |
+| `equipe/antonio-ciro-sandes-de-oliveira/index.html` | Perfil do advogado |
+| `publicacoes/index.html` | Espaço editorial com estado “em breve” |
+| `contato/index.html` | Canais diretos e preparação de mensagem |
+| `privacidade/index.html` | Funcionamento dos dados nesta versão |
+| `css/style.css` | Identidade visual, componentes e regras responsivas |
+| `js/main.js` | Navegação, animações, acordeões e formulário |
+| `assets/img/architecture.svg` | Composição arquitetônica vetorial original |
+| `assets/icons/favicon.svg` | Ícone da identidade visual |
+| `assets/icons/skyline.svg` | Silhueta de cidade usada nos fundos escuros |
+| `assets/img/equipe/` | Pasta da foto do advogado (`antonio-ciro-sandes.jpg`) |
+| `assets/fonts/` | Fontes locais Liberation Sans e sua licença |
 
-- `assets/img/logo/ciro-sandes-logo.png` — logotipo, usado no header e no rodapé de todas as páginas
-- `assets/img/equipe/antonio-ciro-sandes.jpg` — foto do advogado (retrato, proporção 4:5), usada em `/`, `/equipe/` e `/equipe/antonio-ciro-sandes-de-oliveira/`
+## O que foi alterado
 
-Basta salvar os arquivos com esses nomes exatos nessas pastas.
+- Nova composição editorial, com verde institucional, marfim e bege.
+- Tipografia sem serifa, hierarquia mais clara e uso restrito de letras maiúsculas.
+- Monograma CS em SVG e uma composição arquitetônica própria no início.
+- Entrada de conteúdo, movimento ambiental, resposta sutil ao ponteiro, acordeões com altura animada e estados de hover/foco.
+- Controle para pausar movimento, respeito a `prefers-reduced-motion` e suspensão da animação principal fora da tela/aba.
+- Menu móvel com navegação por teclado, Escape, indicação de estado e gerenciamento de foco.
+- Layouts para celular, tablet e desktop; campos com tamanho adequado no celular.
+- Links internos e fontes locais, sem imagens quebradas, CDN, rastreamento ou pacotes de animação.
+- Conteúdo provisório retirado da apresentação pública. Não foram criados números de experiência, credenciais, prêmios, retratos ou artigos fictícios.
 
-## Pendências de conteúdo
+## Editar a aparência
 
-Busque por `[...]` nos arquivos `.html`:
+Os tokens estão no início de `css/style.css`, com a paleta Ciro Sandes:
 
-- `OAB/SC [número]` — perfil do advogado e rodapé de todas as páginas
-- `[X] ANOS DE EXPERIÊNCIA` — homepage
-- `[Título da publicação N]` — homepage e `/publicacoes/`
-- `[Associação]/[Certificação]/[Reconhecimento]` — seção "Reconhecimentos e Associações" na homepage (placeholders neutros, sem logos fabricados)
-- `[Graduação — instituição, ano]` / `[Português, ...]` — perfil individual em `/equipe/antonio-ciro-sandes-de-oliveira/`
-- `https://seudominio.com.br/` — trocar pelo domínio real nas tags `canonical`/`og:url` de cada página
+| Variável | Função | Cor |
+| --- | --- | --- |
+| `--paper` | Fundo principal (marfim) | `#F6F3ED` |
+| `--paper-deep` | Fundo alternativo (bege claro) | `#EAE5DB` |
+| `--white` | Branco auxiliar | `#FCFBF8` |
+| `--forest` | Verde institucional | `#0C3C2F` |
+| `--forest-deep` | Verde mais escuro (hero, rodapé) | `#082923` |
+| `--ink` | Texto principal | `#191918` |
+| `--taupe` | Cinza/taupe auxiliar | `#989590` |
+| `--line` / `--sage` | Bordas e acentos sobre fundo escuro | `#DED9D0` |
+| `--muted` | Texto corrido secundário | `#6E6A63` (taupe escurecido para leitura) |
 
-## Cores
+As demais tonalidades do CSS e do arco (`assets/img/architecture.svg`) foram derivadas dessa paleta.
 
-Paleta em `css/style.css`, no topo (`:root`):
+## Logo, foto e fundos
 
-| Token | Uso | Hex |
-|---|---|---|
-| `--color-bg` | fundo principal (marfim) | `#F6F3ED` |
-| `--color-bg-alt` | fundo alternado (seções "experiência"/"publicações"/page-hero) | `#EAE5DB` |
-| `--color-white` | branco auxiliar (molduras, thumbs, formulário claro) | `#FCFBF8` |
-| `--color-green` | verde institucional (header, hero, footer, contato, links, botões) | `#0C3C2F` |
-| `--color-text` | texto principal | `#191918` |
-| `--color-text-muted` | texto secundário | `#989590` |
-| `--color-border` | bordas | `#DED9D0` |
+- **Logo:** reproduzida em HTML/CSS (`.brand-type`), em serifa (Georgia), maiúsculas espaçadas e a inicial de cada palavra um tamanho acima, no formato do logotipo "CIRO SANDES / ADVOCACIA ESTRATÉGICA". É tipográfica para aparecer em marfim sobre o verde escuro.
+- **Foto do advogado:** salve o arquivo como `assets/img/equipe/antonio-ciro-sandes.jpg`. Ela aparece na página inicial, em `equipe/` e no perfil. Enquanto o arquivo não existir, o painel mostra o monograma "CS".
+- **Fundos:** hero e banners internos usam a silhueta de cidade (`assets/icons/skyline.svg`) e a hachura diagonal; as seções em bege usam a hachura discreta.
+- **WhatsApp:** botão fixo no canto inferior direito de todas as páginas.
 
-Paleta fixa (não segue o dark mode do sistema — é uma marca, não um app).
+Os textos são HTML real, disponível antes da execução do JavaScript. Edite os arquivos de cada página. Cabeçalho e rodapé aparecem em todas as páginas; mantenha as alterações de marca e contatos consistentes entre elas.
 
-## Tipografia
+## Contato: comportamento real
 
-- `--font-base` (Raleway): usada em todo o corpo de texto e títulos de seção
-- `--font-heading` (Georgia): reservada só para a marca "Ciro Sandes" no
-  header/rodapé, com a inicial de cada palavra importante ampliada via
-  `js/main.js` → `applyCapInitials` (classe `cap-initials`)
+O site é estático e não tem servidor de envio.
 
-## Header
+- WhatsApp abre o canal do número já presente no material original.
+- Telefone usa `tel:` e e-mail usa `mailto:`.
+- O formulário valida campos e consentimento, prepara assunto e corpo e solicita a abertura do aplicativo de e-mail do visitante.
+- O visitante revisa e confirma o envio no aplicativo. O site não anuncia “mensagem enviada”.
+- Após preparar o texto, a opção “Copiar mensagem” permite usá-lo em outro aplicativo. Os campos não são apagados.
+- Nenhum dado do formulário é gravado em cookies, `localStorage`, banco de dados ou enviado para um endpoint pelo código do site.
 
-`--header-height: 110px` no desktop, `90px` em telas ≤860px, e
-`--header-height-scrolled: 55px` ao rolar — fica transparente sobre a seção
-escura no topo de cada página (`.hero` na home, `.page-hero` nas demais) e
-passa a ter fundo verde sólido, controlado por `js/main.js`
-(`updateHeaderState`, classe `is-scrolled`).
+Para envio automático dentro da página, será necessário conectar um serviço/backend e ajustar o texto de privacidade ao tratamento efetivamente realizado.
 
-## Formulário de contato
+## Conteúdo ainda não fornecido
 
-Os formulários em `/` e `/contato/` validam no client-side (incluindo o
-checkbox de consentimento LGPD, desmarcado por padrão) mas não enviam
-e-mail ainda — conecte a um serviço como Formspree, EmailJS ou seu próprio
-backend (ver `js/main.js`).
+O arquivo original não continha logotipo final, fotografia do advogado, número de inscrição da OAB, formação, anos de experiência ou artigos reais. A nova versão usa identidade tipográfica e composição vetorial no lugar de imagens ausentes; publicações ficam sinalizadas como “em breve”.
 
-## Próximos passos sugeridos
+Adicione os dados profissionais confirmados e os materiais definitivos antes da divulgação pública. Os contatos e o endereço foram preservados conforme o arquivo recebido, sem verificação externa. As informações de privacidade descrevem o comportamento deste código; complemente-as com as práticas efetivas do escritório e da hospedagem.
 
-- Adicionar o logotipo e a foto do advogado
-- Preencher número da OAB, anos de experiência e domínio real
-- Escrever o conteúdo completo de `/privacidade/`
-- Ampliar `/equipe/` conforme novos profissionais entrarem (o grid já é responsivo a qualquer quantidade de perfis)
+As páginas de publicações e privacidade mantêm `noindex,follow` enquanto o conteúdo definitivo é revisado. Não há domínio fictício nas tags canonical/og:url; configure esses metadados quando o domínio final for conhecido.
+
+## Verificação desta entrega
+
+- Sintaxe de JavaScript verificada com `node --check`.
+- Arquivos e destinos locais das sete páginas verificados, incluindo âncoras, fontes e SVGs.
+- Identificadores únicos, um título principal por página e associação entre campos e rótulos conferidos.
+- As sete páginas foram abertas no Chromium em 1440px e 390px: sem erros de JavaScript, sem arquivos ausentes (exceto a foto, ainda não fornecida), sem conteúdo invisível após a rolagem e sem rolagem horizontal. O espaço da foto foi testado com uma imagem provisória. Não foi feita uma certificação formal de acessibilidade ou de desempenho.
+
+## Fontes e recursos
+
+Liberation Sans está distribuída junto ao projeto sob SIL Open Font License 1.1. O aviso de direitos autorais e a licença completa estão em `assets/fonts/LICENSE.txt`. Os demais elementos gráficos desta versão foram construídos em SVG/CSS; não há imagens de banco externas.
